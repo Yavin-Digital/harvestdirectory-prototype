@@ -41,12 +41,12 @@ function index(){var out=[];
  return out}
 var IDX=index();
 function search(q){q=q.trim().toLowerCase();if(!q)return [];var w=q.split(/\s+/);
- var syn={ac:'hvac',air:'hvac',school:'schools',trash:'trash',pizza:'pizza',soccer:'soccer'};
+ var syn={ac:'hvac',air:'hvac',school:'schools',trash:'trash',pizza:'pizza',soccer:'soccer',plumber:'plumbing',plumbers:'plumbing',plumb:'plumbing',electrician:'electrical',electricians:'electrical',electric:'electrical',cleaner:'cleaning',cleaners:'cleaning',maid:'cleaning',landscaper:'landscaping',landscapers:'landscaping',lawn:'landscaping',yard:'landscaping',pool:'pool',pools:'pool',tutor:'tutoring',tutors:'tutoring',pet:'pet',pets:'pet',roofer:'roofing',roofers:'roofing',exterminator:'pest'};
  return IDX.map(function(i){var t=i.txt.toLowerCase(),s=0;w.forEach(function(x){x=syn[x]||x;if(t.indexOf(x)>-1)s+=1;if(t.indexOf(x.replace(/s$/,''))>-1)s+=.5});return [s,i]}).filter(function(a){return a[0]>0}).sort(function(a,b){return b[0]-a[0]}).slice(0,10).map(function(a){return a[1]})}
 function wireSearch(){var f=$('#sform');if(!f)return;var inp=$('#q'),box=$('#results');
  function run(){var r=search(inp.value);box.hidden=!inp.value.trim();
-  box.innerHTML=r.length?r.map(function(i){return '<a class="res" href="'+i.href+'"><span class="t">'+i.t+'</span><span><b>'+esc(i.title)+(i.ex?' '+EX:'')+'</b>'+esc(i.sub)+'</span></a>'}).join(''):'<p class="res">No match in Harvest yet. <a href="#need">Tell us what Harvest needs</a>.</p>'}
- f.addEventListener('submit',function(e){e.preventDefault();run()});inp.addEventListener('input',run);
+  box.innerHTML=r.length?r.map(function(i){return '<a class="res" href="'+i.href+'"><span class="t">'+i.t+'</span><span><b>'+esc(i.title)+(i.ex?' '+EX:'')+'</b>'+esc(i.sub)+'</span></a>'}).join(''):'<p class="res">No match in Harvest yet. <a href="#need">Tell us what Harvest needs</a></p>'}
+ f.addEventListener('submit',function(e){e.preventDefault();run()});var pq=new URLSearchParams(location.search).get('q');if(pq){inp.value=pq;run()}inp.addEventListener('input',run);
  $$('.chip').forEach(function(c){c.addEventListener('click',function(){inp.value=c.dataset.q;run();inp.focus()})})}
 // ---- right now ----
 function renderNow(){var el=$('#now');if(!el)return;var day=TODAY.getDay(),iso=[TODAY.getFullYear(),('0'+(TODAY.getMonth()+1)).slice(-2),('0'+TODAY.getDate()).slice(-2)].join('-');
@@ -54,7 +54,7 @@ function renderNow(){var el=$('#now');if(!el)return;var day=TODAY.getDay(),iso=[
  var up=S.events.filter(function(e){return e.date&&e.date>iso}).sort(function(a,b){return a.date<b.date?-1:1}).slice(0,4);
  var dont=S.events.filter(function(e){return e.type==="Don't Forget"&&!(e.recurring==='wed'&&day===3)});
  if(!today.length&&!up.length&&!dont.length){el.closest('section').hidden=true;return}
- var li=function(e){return '<li><b>'+esc(e.title)+(e.source==='example'?' '+EX:'')+'</b><span class="when">'+esc(e.when)+'</span>'+(e.note?'<br><span class="note">'+esc(e.note)+'</span>':'')+'</li>'};
+ var li=function(e){return '<li><b>'+esc(e.title)+(e.source==='example'?' '+EX:'')+'</b><span class="when">'+esc(e.when)+'</span>'+(e.note&&/[?&]review=1/.test(location.search)?'<br><span class="note">'+esc(e.note)+'</span>':'')+'</li>'};
  var col=function(h,a){return a.length?'<div><h3>'+h+'</h3><ul>'+a.map(li).join('')+'</ul></div>':''};
  $('#nowdate').textContent=TODAY.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
  el.innerHTML=col('Today',today)+col('Coming Up',up)+col("Don't Forget",dont)}
@@ -92,3 +92,8 @@ function wireNeed(){$$('form[data-proto]').forEach(function(f){f.addEventListene
 window.H={S:S,$:$,$$:$$,esc:esc,EX:EX,bizCard:bizCard,offerCard:offerCard,activeOffers:activeOffers,catName:catName,badges:badges,cta:cta,saveBtn:saveBtn,store:store};
 wireSearch();renderNow();wireLookup();wireAsk();wireNeed();
 })();
+
+// F5 Medium: filter click rebuilds buttons -> focus lost to <body>  members.html:16 ; F9 Low same on my-harvest remove (my-harvest.html:12)
+document.addEventListener('click',function(e){var b=e.target.closest('#filters button,#my .save');if(!b)return;var c=b.dataset.c,s=b.dataset.save;setTimeout(function(){var n=c?document.querySelector('#filters button[data-c="'+c+'"]'):document.querySelector('#my .save[data-save="'+s+'"]')||document.querySelector('#my h2,#my p');if(n){if(!n.matches('button'))n.tabIndex=-1;n.focus({preventScroll:true})}},0)},true);
+// F6 Medium: request form uses native bubbles only; add inline errors  index.html:48, members.html:11
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('form[data-proto]').forEach(function(f){f.noValidate=true;f.addEventListener('submit',function(e){var bad=null;f.querySelectorAll('input').forEach(function(i){var id=i.id+'-err',m=document.getElementById(id);if(m)m.remove();i.removeAttribute('aria-invalid');if(!i.checkValidity()){bad=bad||i;i.setAttribute('aria-invalid','true');m=document.createElement('p');m.id=id;m.className='field-err';m.style.cssText='color:#8b2a0e;font-size:1rem;margin:6px 0 12px;font-weight:600';m.textContent=i.type==='email'?'Enter an email like name@example.com.':'Tell us what kind of business.';i.setAttribute('aria-describedby',id);i.after(m)}});if(bad){e.preventDefault();e.stopImmediatePropagation();bad.focus()}},true)})});

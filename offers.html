@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css"></head>
 <body data-page="offers"><div id="hdr"></div><main id="main">
-<section class="phero"><div class="wrap"><p class="kicker">Deals Near Me Today</p><h1>Harvest-only deals</h1><p>Neighbor specials and new resident offers. Every offer shows when it ends.</p></div></section><section class="band tight"><div class="wrap"><label for="oq">Search deals</label><input id="oq" type="text" placeholder="tune-up, pizza..." style="max-width:520px;margin-bottom:30px"><div class="list" id="ol"></div></div></section>
+<section class="phero"><div class="wrap"><p class="kicker">Deals Near Me Today</p><h1>Harvest-only deals</h1><p>Neighbor specials and new resident offers. Every offer shows when it ends.</p></div></section><section class="band tight"><div class="wrap"><label for="oq">Search deals</label><input id="oq" type="search" enterkeyhint="search" autocomplete="off" aria-label="Search deals" placeholder="tune-up, pizza..."><div class="list" id="ol"></div></div></section>
 </main><div id="ftr"></div>
 <script src="js/site.js"></script><script src="js/layout.js"></script><script src="js/app.js"></script><script>(function(){var H=window.H;function d(){var q=H.$('#oq').value.toLowerCase();var l=H.activeOffers().filter(function(o){return !q||(o.title+' '+o.kind).toLowerCase().indexOf(q)>-1});H.$('#ol').innerHTML=l.length?l.map(H.offerCard).join(''):'<p>No matching deals right now.</p>'}H.$('#oq').oninput=d;d()})()</script>
 </body></html>

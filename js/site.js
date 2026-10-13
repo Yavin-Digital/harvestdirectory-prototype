@@ -41,7 +41,7 @@ window.SITE = {
   businesses: [
     { id:"tribe-maker", source:"live", name:"The Tribe Maker", cat:"pro", sub:"Web & Marketing",
       tagline:"Web design & digital marketing for local businesses",
-      about:"Yavin Digital is a small, neighbor-run web studio right here in Harvest. We help local shops, home service pros, and family businesses look as good online as they do in person, with clean websites, simple booking, and Google profiles that actually bring in calls.",
+      about:"The Tribe Maker is a small, neighbor-run web studio right here in Harvest. We help local shops, home service pros, and family businesses look as good online as they do in person, with clean websites, simple booking, and Google profiles that actually bring in calls.",
       phone:"(817) 812-8946", email:"mike@thetribemaker.com", web:"https://thetribemaker.com", city:"Harvest, Argyle, TX 76226",
       logo:"assets/tribemaker-logo.png", hero:"assets/tribemaker-hero.jpg",
       badges:["resident","verified","serves"], ownerNote:"Mike lives right here in Harvest.", recs:18, recsExample:true, views:9 },
