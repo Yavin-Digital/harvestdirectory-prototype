@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Community in Harvest | Harvest Directory</title><meta name="description" content="Groups, clubs, churches, HOA groups, sports and volunteer opportunities in Harvest."><meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://harvestdirectory-preview.clientreview.co/community.html"><meta property="og:title" content="Community in Harvest | Harvest Directory"><meta property="og:description" content="Groups, clubs, churches, HOA groups, sports and volunteer opportunities in Harvest.">
+<meta property="og:image" content="https://harvestdirectory-preview.clientreview.co/assets/harvest-farmhouse.jpg"><meta property="og:url" content="https://harvestdirectory-preview.clientreview.co/community.html"><meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css"></head>
+<body data-page="community"><div id="hdr"></div><main id="main">
+<section class="phero"><div class="wrap"><p class="kicker">Community</p><h1>Groups, clubs and what is happening</h1><p>Groups, clubs, churches, HOA groups, sports and volunteering.</p></div></section><section class="band tight"><div class="wrap"><h2>Happening in Harvest</h2><div class="now" id="now"></div><p class="date" id="nowdate" hidden></p></div></section><section class="band tight white"><div class="wrap"><h2>Groups</h2><div class="list" id="cl"></div></div></section>
+</main><div id="ftr"></div>
+<script src="js/site.js"></script><script src="js/layout.js"></script><script src="js/app.js"></script><script>(function(){var H=window.H;H.$('#cl').innerHTML=H.S.community.map(function(c,i){return '<article class="card"><span class="kind" style="font:700 1rem Inter;letter-spacing:.06em;text-transform:uppercase;color:#8a5a10">'+c.kind+'</span><h3>'+H.esc(c.name)+(c.source==='example'?' '+H.EX:'')+'</h3>'+(c.note?'<p>'+c.note+'</p>':'')+'<div class="actions">'+(c.web?'<a class="btn btn-dark" href="'+c.web+'" rel="noopener">Website</a>':'')+H.saveBtn('group','g'+i,c.name)+'</div></article>'}).join('')})()</script>
+</body></html>

@@ -1,0 +1,94 @@
+(function(){
+var S=window.SITE, $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var esc=function(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var EX='<span class="ex">Example</span>';
+var TODAY=new Date(); // prototype uses the real date
+// ---- favorites ----
+var KEY='harvest.myharvest.v1';
+function store(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+function isSaved(t,id){var s=store();return (s[t]||[]).indexOf(id)>-1}
+function toggle(t,id){var s=store();s[t]=s[t]||[];var i=s[t].indexOf(id);if(i>-1)s[t].splice(i,1);else s[t].push(id);localStorage.setItem(KEY,JSON.stringify(s));return i===-1}
+function toast(m){var t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=m;document.body.appendChild(t);setTimeout(function(){t.remove()},2200)}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-save]');if(!b)return;var on=toggle(b.dataset.type,b.dataset.save);b.setAttribute('aria-pressed',on);b.textContent=on?'Saved':'Save';toast(on?'Saved to My Harvest':'Removed from My Harvest');if(window.renderMy)renderMy();});
+function saveBtn(t,id,label){var on=isSaved(t,id);return '<button class="save" data-save="'+id+'" data-type="'+t+'" aria-pressed="'+on+'" aria-label="Save '+esc(label)+' to My Harvest">'+(on?'Saved':'Save')+'</button>'}
+// ---- badges / ctas ----
+var BADGE={resident:['res','Harvest Resident Owned'],recommended:['','Recommended by Harvest Residents'],serves:['','Serves Harvest'],verified:['tip','Verified']};
+function badges(b){return '<div class="badges">'+(b.badges||[]).map(function(k){var d=BADGE[k];return '<span class="badge '+d[0]+'"'+(k==='verified'?' title="Verified: identity, contact details and that the business serves Harvest have been confirmed." tabindex="0"':'')+'>'+d[1]+'</span>'}).join('')+'</div>'}
+function cta(b){return S.ctas[b.sub]||'Contact'}
+function catName(id){var c=S.categories.filter(function(c){return c.id===id})[0];return c?c.name:''}
+function bizCard(b){var ex=b.source==='example';
+ var img=b.logo?'<img class="logo" src="'+b.logo+'" alt="'+esc(b.name)+' logo" width="64" height="64" loading="lazy">':'<div class="ph" aria-hidden="true">'+esc(b.name.replace('Example ','').charAt(0))+'</div>';
+ var href=ex?'#':'business.html?id='+b.id;
+ return '<article class="card"><div class="top">'+img+'<div><h3>'+esc(b.name)+'</h3><div class="sub">'+esc(catName(b.cat))+' / '+esc(b.sub)+'</div></div></div>'+(ex?'<div>'+EX+'</div>':'')+
+ '<p>'+esc(b.tagline)+'</p>'+badges(b)+(b.ownerNote?'<p class="recs">'+esc(b.ownerNote)+'</p>':'')+
+ (b.recs?'<p class="recs">Recommended by '+b.recs+' Harvest neighbors'+((ex||b.recsExample)?' '+EX:'')+'</p>':'')+
+ '<div class="actions"><a class="btn btn-dark" href="'+href+'"'+(ex?' onclick="return false" aria-disabled="true"':'')+'>'+esc(cta(b))+'</a>'+saveBtn('biz',b.id,b.name)+'</div></article>'}
+function daysLeft(d){return Math.ceil((new Date(d+'T23:59:59')-TODAY)/864e5)}
+function fmt(d){return new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})}
+function offerCard(o){var b=S.businesses.filter(function(x){return x.id===o.biz})[0]||{},n=daysLeft(o.expires);
+ var urg=n<=0?'Expires today':n<=3?'Only '+n+' day'+(n>1?'s':'')+' left':'Expires '+fmt(o.expires);
+ return '<article class="card offer"><span class="kind">'+esc(o.kind)+'</span><h3>'+esc(o.title)+'</h3><p class="sub">'+esc(b.name||'')+'</p>'+
+ '<p class="exp">'+urg+((o.source==='example'||o.expiresExample)?' '+EX:'')+'</p>'+(o.source==='live'&&o.expiresExample?'<p class="note">Offer is real (live site). The expiry date is an example; the live listing has none.</p>':'')+
+ '<div class="actions">'+(o.source==='live'?'<a class="btn btn-dark" href="business.html?id='+o.biz+'">Claim offer</a>':'')+saveBtn('offer',o.id,o.title)+'</div></article>'}
+function activeOffers(){return S.offers.filter(function(o){return daysLeft(o.expires)>=0}).sort(function(a,b){return a.expires<b.expires?-1:1})}
+// ---- unified search ----
+function index(){var out=[];
+ S.businesses.forEach(function(b){out.push({t:'Business',title:b.name,sub:b.tagline,href:b.source==='live'?'business.html?id='+b.id:'members.html?cat='+b.cat,txt:[b.name,b.sub,catName(b.cat),b.tagline].join(' '),ex:b.source==='example'})});
+ S.resources.forEach(function(r){out.push({t:'Resource',title:r.group+': '+r.name,sub:r.detail+(r.phone?' '+r.phone:''),href:'new-resident.html#'+r.id,txt:[r.group,r.name,r.detail].join(' ')+(r.group==='Trash'?' garbage bulk recycling pickup':'')+(r.group==='Police'?' sheriff':'')})});
+ S.events.forEach(function(e){out.push({t:'Event',title:e.title,sub:e.when,href:'index.html#now',txt:e.title+' events this weekend '+e.type,ex:e.source==='example'})});
+ S.offers.forEach(function(o){out.push({t:'Deal',title:o.title,sub:o.kind,href:'offers.html',txt:o.title+' deal offer special '+o.kind,ex:o.source==='example'})});
+ S.categories.forEach(function(c){out.push({t:'Category',title:c.name,sub:c.subs.join(', '),href:'members.html?cat='+c.id,txt:c.name+' '+c.subs.join(' ')})});
+ return out}
+var IDX=index();
+function search(q){q=q.trim().toLowerCase();if(!q)return [];var w=q.split(/\s+/);
+ var syn={ac:'hvac',air:'hvac',school:'schools',trash:'trash',pizza:'pizza',soccer:'soccer'};
+ return IDX.map(function(i){var t=i.txt.toLowerCase(),s=0;w.forEach(function(x){x=syn[x]||x;if(t.indexOf(x)>-1)s+=1;if(t.indexOf(x.replace(/s$/,''))>-1)s+=.5});return [s,i]}).filter(function(a){return a[0]>0}).sort(function(a,b){return b[0]-a[0]}).slice(0,10).map(function(a){return a[1]})}
+function wireSearch(){var f=$('#sform');if(!f)return;var inp=$('#q'),box=$('#results');
+ function run(){var r=search(inp.value);box.hidden=!inp.value.trim();
+  box.innerHTML=r.length?r.map(function(i){return '<a class="res" href="'+i.href+'"><span class="t">'+i.t+'</span><span><b>'+esc(i.title)+(i.ex?' '+EX:'')+'</b>'+esc(i.sub)+'</span></a>'}).join(''):'<p class="res">No match in Harvest yet. <a href="#need">Tell us what Harvest needs</a>.</p>'}
+ f.addEventListener('submit',function(e){e.preventDefault();run()});inp.addEventListener('input',run);
+ $$('.chip').forEach(function(c){c.addEventListener('click',function(){inp.value=c.dataset.q;run();inp.focus()})})}
+// ---- right now ----
+function renderNow(){var el=$('#now');if(!el)return;var day=TODAY.getDay(),iso=[TODAY.getFullYear(),('0'+(TODAY.getMonth()+1)).slice(-2),('0'+TODAY.getDate()).slice(-2)].join('-');
+ var today=S.events.filter(function(e){return e.date===iso||(e.recurring==='wed'&&day===3)});
+ var up=S.events.filter(function(e){return e.date&&e.date>iso}).sort(function(a,b){return a.date<b.date?-1:1}).slice(0,4);
+ var dont=S.events.filter(function(e){return e.type==="Don't Forget"&&!(e.recurring==='wed'&&day===3)});
+ if(!today.length&&!up.length&&!dont.length){el.closest('section').hidden=true;return}
+ var li=function(e){return '<li><b>'+esc(e.title)+(e.source==='example'?' '+EX:'')+'</b><span class="when">'+esc(e.when)+'</span>'+(e.note?'<br><span class="note">'+esc(e.note)+'</span>':'')+'</li>'};
+ var col=function(h,a){return a.length?'<div><h3>'+h+'</h3><ul>'+a.map(li).join('')+'</ul></div>':''};
+ $('#nowdate').textContent=TODAY.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+ el.innerHTML=col('Today',today)+col('Coming Up',up)+col("Don't Forget",dont)}
+// ---- address lookup (EXAMPLE LOGIC) ----
+function wireLookup(){var f=$('#lookup');if(!f)return;
+ f.addEventListener('submit',function(e){e.preventDefault();var side=(f.querySelector('input[name=side]:checked')||{}).value,addr=$('#addr').value.trim();
+  var out=$('#lookup-out');if(!side){out.innerHTML='<p role="alert">Choose which side of Harvest Way you live on.</p>';return}
+  var w=side==='west',R=function(id){return S.resources.filter(function(r){return r.id===id})[0]};
+  var row=function(k,v){return '<dt>'+k+'</dt><dd>'+v+'</dd>'},ph=function(r){return r.phone?' <a href="tel:'+r.phone.replace(/\D/g,'')+'">'+r.phone+'</a>':''};
+  out.innerHTML='<h3>Who serves '+(addr?esc(addr):'your street')+'</h3><p class="note">'+EX+' The west/east split uses example logic from the side you picked. A real lookup would geocode the address.</p><dl>'+
+   row('District',w?'District 1, west of Harvest Way':'District 2, east of Harvest Way')+
+   row('Water',w?R('water-w').name+ph(R('water-w')):R('water-e').name+ph(R('water-e'))+'<br>Sewer: Town of Argyle (sewer only)')+
+   row('Police',w?'Northlake PD, non-emergency 940-349-1600 ext 9':'Denton County Sheriff')+
+   row('Fire / EMS','Denton County ESD No. 1'+ph(R('fire')))+
+   row('Trash','Republic Services, every Wednesday, carts out by 7am'+ph(R('trash')))+
+   row('HOA','FirstService Residential'+ph(R('hoa')))+
+   row('School district','Northwest ISD')+
+   row('Voting precinct','<a href="https://www.votedenton.gov/voter-information/voter-lookup/">Look up your precinct with Denton County</a>')+
+   row('Town','Not confirmed by street yet. <span class="note">Pending verification.</span>')+'</dl>'})}
+// ---- ask harvest (simulated) ----
+var ANS=[[/bulk|trash|garbage|recycl|brush/,'Trash, recycling, brush and bulk are all picked up every Wednesday by Republic Services. Have carts out by 7am. Questions: 817-953-7214.'],
+ [/\bac\b|hvac|air|heat|cool/,'Harvest neighbors recommend <b>Example HVAC Co.</b> '+EX+' (12 recommendations). Tap Request Service on their listing. Real HVAC listings will show here once they join.'],
+ [/water|bill/,'West of Harvest Way (District 1): Town of Northlake Utility Billing, 940-648-3290. East (District 2): Argyle Water Supply Corp, 940-464-7713.'],
+ [/hoa|pool|amenit/,'The Harvest HOA is managed by FirstService Residential: (817) 717-7780, after hours 877-378-2388, harvest@fsresidential.com.'],
+ [/police|sheriff/,'West of Harvest Way: Northlake PD, non-emergency 940-349-1600 ext 9. East: Denton County Sheriff. Emergencies: call 911.'],
+ [/vote|elect|precinct/,'Find your precinct and polling places at votedenton.gov. Register or check status at votetexas.gov.'],
+ [/school|isd/,'Harvest is served by Northwest ISD. Check your campus with the district.'],
+ [/web|website|market/,'The Tribe Maker builds websites and marketing for local businesses, and the owner lives right here in Harvest. (817) 812-8946.']];
+function wireAsk(){var f=$('#ask');if(!f)return;var o=$('#ask-out');
+ function go(q){var a=ANS.filter(function(x){return x[0].test(q.toLowerCase())})[0];o.innerHTML=a?a[1]:'I do not have that yet. Try the search above, or <a href="#need">tell us what Harvest needs</a>.'}
+ f.addEventListener('submit',function(e){e.preventDefault();go($('#askq').value)});
+ $$('.ask-q button').forEach(function(b){b.addEventListener('click',function(){$('#askq').value=b.textContent;go(b.textContent)})})}
+// ---- need form ----
+function wireNeed(){$$('form[data-proto]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var m=f.querySelector('.formmsg');m.textContent='Thanks. This is a prototype, so nothing was sent.';f.reset()})})}
+window.H={S:S,$:$,$$:$$,esc:esc,EX:EX,bizCard:bizCard,offerCard:offerCard,activeOffers:activeOffers,catName:catName,badges:badges,cta:cta,saveBtn:saveBtn,store:store};
+wireSearch();renderNow();wireLookup();wireAsk();wireNeed();
+})();

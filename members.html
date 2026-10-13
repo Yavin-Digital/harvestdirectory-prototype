@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Local Businesses in Harvest | Harvest Directory</title><meta name="description" content="Local businesses that serve Harvest homeowners, by category. Resident owned and resident recommended badges."><meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://harvestdirectory-preview.clientreview.co/members.html"><meta property="og:title" content="Local Businesses in Harvest | Harvest Directory"><meta property="og:description" content="Local businesses that serve Harvest homeowners, by category. Resident owned and resident recommended badges.">
+<meta property="og:image" content="https://harvestdirectory-preview.clientreview.co/assets/harvest-farmhouse.jpg"><meta property="og:url" content="https://harvestdirectory-preview.clientreview.co/members.html"><meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css"></head>
+<body data-page="members"><div id="hdr"></div><main id="main">
+<section class="phero"><div class="wrap"><p class="kicker">Local Businesses</p><h1>Local businesses that serve Harvest</h1><p>Listed because they serve Harvest. Badges show who lives here and who neighbors recommend.</p></div></section><section class="band tight"><div class="wrap"><div class="filters" id="filters" aria-label="Filter by category"></div><div class="list" id="list"></div></div></section><section class="band tight white" id="need"><div class="wrap split"><div><p class="kicker">Lead loop</p><h2>Can't find what you need?</h2><p class="muted">Tell us what kind of business Harvest needs. We use requests to invite the right local businesses.</p></div>
+<form data-proto><label for="needw">What kind of business?</label><input id="needw" type="text" placeholder="Pool cleaning, piano teacher, mobile vet..." required>
+<p><label for="neede">Email (optional)</label><input id="neede" type="email" autocomplete="email"></p><button class="btn btn-dark" type="submit">Send request</button><p class="formmsg note" role="status"></p></form></div></section>
+</main><div id="ftr"></div>
+<script src="js/site.js"></script><script src="js/layout.js"></script><script src="js/app.js"></script><script>(function(){var H=window.H,S=H.S,cur=new URLSearchParams(location.search).get('cat')||'all';
+var used={};S.businesses.forEach(function(b){used[b.cat]=1});
+function draw(){H.$('#filters').innerHTML=[['all','All']].concat(S.categories.filter(function(c){return used[c.id]}).map(function(c){return [c.id,c.name]})).map(function(c){return '<button type="button" data-c="'+c[0]+'" aria-pressed="'+(c[0]===cur)+'">'+c[1]+'</button>'}).join('');
+var l=S.businesses.filter(function(b){return cur==='all'||b.cat===cur});H.$('#list').innerHTML=l.length?l.map(H.bizCard).join(''):'<p>No businesses in this category yet. <a href="#need">Tell us who Harvest needs.</a></p>';
+H.$$('#filters button').forEach(function(b){b.onclick=function(){cur=b.dataset.c;history.replaceState(0,'','?cat='+cur);draw()}})}draw()})()</script>
+</body></html>
