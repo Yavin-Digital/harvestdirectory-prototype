@@ -199,3 +199,8 @@ input[type=text],input[type=email],select,textarea{border-color:#857c6c}
 /* F11 Low: my-harvest empty-state links are 24px-tall inline links (only CTAs) my-harvest.html:15 */
 #my>p:first-child a{display:inline-flex;min-height:48px;align-items:center}
 #oq{width:100%;min-height:52px;border:1px solid #857c6c;border-radius:10px;padding:12px 16px;font:400 1.125rem Inter,sans-serif;background:#fff;color:var(--text-c);max-width:520px;margin-bottom:30px;-webkit-appearance:none;appearance:none}
+
+/* Final polish */
+@media (min-width:601px){.hero{align-items:flex-start}.hero .wrap{padding-top:max(130px,22svh)}}
+.save,.ask-q button{border-color:#857c6c}
+.profile .badges,.profile-body .badges{justify-content:flex-start}
