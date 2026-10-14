@@ -153,6 +153,7 @@ textarea{min-height:120px}
 .note{font-size:1rem;color:var(--muted)}
 .dark .note,.slate .note{color:#c9c3b6}
 .hero .kicker,.phero .kicker{color:var(--gold)}
+.phero .kicker{color:#f8dc9c} /* M1 r5: #e0a63a on photo = 2.88-4.27:1 at 18-20px/600; #f8dc9c = 4.67+ */
 .dark .now h3{color:var(--gold);border-color:rgba(255,255,255,.16)}.dark .now li{border-color:rgba(255,255,255,.12)}.dark .when{color:#c9c3b6}
 .slate .intent li a{color:#fff}
 @media (max-width:600px){.search .btn{padding:14px 18px}}
@@ -274,3 +275,5 @@ aside.card .btn{white-space:normal;overflow-wrap:anywhere;text-align:center}
 @media (min-width:1024px){.phero{min-height:640px}.phero h1{max-width:22ch}}
 #ol{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
 #ol>.card{flex:0 1 calc((100% - 48px)/3);min-width:min(100%,300px)}
+/* r5 L2: smaller hero on phones (downscaled only) + preload in <head> */
+@media (max-width:768px){.hero,.phero{background-image:url(../assets/harvest-farmhouse-1280.webp)}}
