@@ -231,3 +231,22 @@ input[type=text],input[type=email],select,textarea{border-color:#857c6c}
 .specialoffer{max-width:720px;margin:0 auto}
 .bizcover-band + .band{padding-top:40px}
 .srcl{min-height:48px;min-width:48px}
+
+/* CLS gate */
+html.js-wait main{visibility:hidden}
+/* Mobile Bandit r3 fixes */
+/* Harvest Directory r3 (52dd7da) proposed fixes, tested by injection in Chromium + WebKit */
+/* H1 business.html:23 + css/site.css .split: the "Email mike@thetribemaker.com" button min-content (319px) forces sideways scroll at 320 */
+.split>*{min-width:0}
+aside.card .btn{white-space:normal;overflow-wrap:anywhere;text-align:center}
+/* M1 business.html:22 (inline #b9b1a2 border removed) + css/site.css:198: Yes/No labels get rgba(255,255,255,.55) on paper = ~1:1 */
+.profile-body .seg label,#recform .seg label{border-color:#857c6c}
+/* M2 css/site.css:54 .bizbanner: 2172w cover is 1.23x at 1024 portrait (DPR2). Interim cap until a >=2880w export exists */
+@media (min-width:769px) and (min-resolution:2dppx){.bizcover{max-width:724px;margin-inline:auto}}
+/* L2 inline links in guide chapters (site.js:257-259) and side-picker answer phones (app.js:132) 21-24px tall */
+.chapter li a:not(.srcl),.answer dd a{display:inline-block;padding:14px 0;margin:-14px 0;max-width:100%}
+/* L4 css/site.css:44 chevron sits below the fold on short phones (825px top at 320x568): hide where it can't be seen */
+@media (max-width:600px) and (max-height:700px){.scrollcue{display:none}}
+/* L6 css/site.css:92-93 side picker: no focus ring in WebKit after arrow keys, and the chosen side has no state beyond the native dot */
+.seg label:has(:focus-visible){outline:3px solid var(--gold);outline-offset:2px}
+.seg label:has(:checked){border-color:var(--gold);background:rgba(224,166,58,.16)}

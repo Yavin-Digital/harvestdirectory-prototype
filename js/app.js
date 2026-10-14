@@ -98,6 +98,8 @@ function wireNeed(){$$('form[data-proto]').forEach(function(f){f.addEventListene
 window.H={S:S,$:$,$$:$$,esc:esc,EX:EX,bizCard:bizCard,offerCard:offerCard,activeOffers:activeOffers,catName:catName,badges:badges,cta:cta,saveBtn:saveBtn,store:store,wireRecs:wireRecs};
 wireSearch();renderNow();wireLookup();renderGuide();wireRecs();wireAsk();wireNeed();
 })();
+/* CLS gate release: page-specific inline scripts run right after app.js, so release on DOMContentLoaded */
+document.addEventListener('DOMContentLoaded',function(){document.documentElement.classList.remove('js-wait')});
 
 // F5 Medium: filter click rebuilds buttons -> focus lost to <body>  members.html:16 ; F9 Low same on my-harvest remove (my-harvest.html:12)
 document.addEventListener('click',function(e){var b=e.target.closest('#filters button,#my .save');if(!b)return;var c=b.dataset.c,s=b.dataset.save;setTimeout(function(){var n=c?document.querySelector('#filters button[data-c="'+c+'"]'):document.querySelector('#my .save[data-save="'+s+'"]')||document.querySelector('#my h2,#my p');if(n){if(!n.matches('button'))n.tabIndex=-1;n.focus({preventScroll:true})}},0)},true);
@@ -106,3 +108,16 @@ document.addEventListener('DOMContentLoaded',function(){document.querySelectorAl
 
 // Gate R3: 'Other' (and any #need link) focuses the lead form input
 document.querySelectorAll('a[href="#need"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){var i=document.querySelector('#need input');if(i)i.focus({preventScroll:true})},50)})});
+
+/* Mobile Bandit r3 fixes (L3 chevron focus, L5 recform inline errors) */
+/* Harvest Directory r3 proposed JS fixes */
+document.addEventListener('DOMContentLoaded',function(){
+ /* L3 index.html:77 chevron: focus stays on <body> after the jump (tested r3a: focus lands on #intent-h) */
+ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.scrollcue');if(!a)return;var t=document.getElementById('intent-h');if(!t)return;t.setAttribute('tabindex','-1');setTimeout(function(){t.focus({preventScroll:true})},0)});
+ /* L5 business.html:22 / app.js:143: native validation bubbles instead of the site's inline-error pattern (F6) */
+ var f=document.getElementById('recform');if(!f)return;f.noValidate=true;
+ f.addEventListener('submit',function(){var m=f.querySelector('.formmsg'),rec=f.querySelector('input[name=rec]:checked'),n=document.getElementById('recname');
+  [n].concat([].slice.call(f.querySelectorAll('input[name=rec]'))).forEach(function(x){x.removeAttribute('aria-invalid')});
+  if(!rec){f.querySelectorAll('input[name=rec]').forEach(function(x){x.setAttribute('aria-invalid','true');x.setAttribute('aria-describedby','recerr')});m.id='recerr';m.textContent='Choose Yes or No.';f.querySelector('input[name=rec]').focus();return}
+  if(!n.value.trim()){n.setAttribute('aria-invalid','true');n.setAttribute('aria-describedby','recerr');m.id='recerr';m.textContent='Add your name.';n.focus()}},true);
+});

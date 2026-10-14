@@ -5,7 +5,8 @@
 <meta property="og:image" content="https://harvestdirectory-preview.clientreview.co/assets/harvest-farmhouse.jpg"><meta property="og:url" content="https://harvestdirectory-preview.clientreview.co/new-resident.html"><meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css"></head>
+<link rel="stylesheet" href="css/site.css"><link rel="preload" href="js/site.js" as="script"><link rel="preload" href="js/layout.js" as="script"><link rel="preload" href="js/app.js" as="script">
+<script>/* CLS gate: hide main until app.js has rendered the data-driven blocks (removed in app.js; 3s safety). */document.documentElement.classList.add('js-wait');setTimeout(function(){document.documentElement.classList.remove('js-wait')},3000)</script></head>
 <body data-page="guide"><div id="hdr"></div><main id="main">
 <section class="phero"><div class="wrap"><p class="kicker">New Resident Guide</p><h1>The Ultimate New Resident Guide to Harvest</h1><p>Everything you need to get settled, checked against official sources on Oct 9, 2026.</p></div></section><section class="band slate" id="lookup-sec"><div class="wrap split"><div><p class="kicker">Who serves my street</p><h2>Who serves my street?</h2><p class="muted">Harvest is split at Harvest Way. West is District 1, east is District 2.</p></div>
 <!-- Side options render from SITE.sides (per-directory; admin sets them). Empty = "See all" link only. --><form class="sidepick" id="lookup"></form></div></section>
