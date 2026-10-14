@@ -24,3 +24,8 @@ The prototype is static. Everything below is mocked in `js/site.js` and has to b
 ## 4. Business profile fields used from the live member page
 - Fields used: tagline, sub-tagline, category tag ("Technology"), Verified Member flag, About paragraphs, phone, email, website, directions URL, cover and logo images, Special Offer, profile view count.
 - The live About text opens "Yavin Digital is…". The prototype says "The Tribe Maker is…" to match the listing name (Marco Gate R1). Confirm which one the owner wants.
+
+## 5. "Who serves my street": home block and fallback
+- The home "Who serves my street?" block and the guide page use the same side picker. There's no address search and no "Look it up" button.
+- The option labels ("West / District 1", "East / District 2") and each side's list come from per-directory data (`SITE.sides.options`, set by admin). Picking a side reveals its list.
+- If a directory has no options set, both places show only a "See all" button linking to the full guide (`new-resident.html#res`).

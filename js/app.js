@@ -62,7 +62,11 @@ function renderNow(){var el=$('#now');if(!el)return;var day=TODAY.getDay(),iso=[
 // Each directory sets its own sides and values in admin (S.sides). No address field: pick a side, see the list instantly.
 function renderSide(out,id){var o=S.sides.options.filter(function(x){return x.id===id})[0];if(!o){out.innerHTML='';return}
  out.innerHTML='<h3>Who serves '+esc(o.label)+'</h3><dl>'+o.rows.map(function(r){var v=esc(r[1]);if(r[3])v='<a href="'+r[3]+'" rel="noopener">'+v+'</a>';if(r[2])v+=' <a href="tel:'+r[2].replace(/\D/g,'')+'">'+r[2]+'</a>';return '<dt>'+esc(r[0])+'</dt><dd>'+v+'</dd>'}).join('')+'</dl>'}
-function wireLookup(){$$('.sidepick').forEach(function(f){var out=f.querySelector('.answer');
+// Options come from S.sides.options, set per directory in admin. No options -> only a "See all" button to the full guide.
+function wireLookup(){$$('.sidepick').forEach(function(f){var opts=(S.sides&&S.sides.options)||[];
+ if(!opts.length){f.innerHTML='<a class="btn btn-gold" href="new-resident.html#res">See all</a>';return}
+ f.innerHTML='<fieldset class="seg" style="border:0;padding:0"><legend style="font-weight:600;margin-bottom:8px">'+esc(S.sides.prompt||'Which side do you live on?')+'</legend>'+opts.map(function(o){return '<label><input type="radio" name="side" value="'+esc(o.id)+'">'+esc(o.label)+'</label>'}).join('')+'</fieldset><div class="answer" aria-live="polite"></div>';
+ var out=f.querySelector('.answer');if(!$('#lookup-out'))out.id='lookup-out';
  f.addEventListener('change',function(e){if(e.target.name==='side')renderSide(out,e.target.value)});
  f.addEventListener('submit',function(e){e.preventDefault()})})}
 // ---- guide chapters (data in S.guide, editable per directory) ----
@@ -99,3 +103,6 @@ wireSearch();renderNow();wireLookup();renderGuide();wireRecs();wireAsk();wireNee
 document.addEventListener('click',function(e){var b=e.target.closest('#filters button,#my .save');if(!b)return;var c=b.dataset.c,s=b.dataset.save;setTimeout(function(){var n=c?document.querySelector('#filters button[data-c="'+c+'"]'):document.querySelector('#my .save[data-save="'+s+'"]')||document.querySelector('#my h2,#my p');if(n){if(!n.matches('button'))n.tabIndex=-1;n.focus({preventScroll:true})}},0)},true);
 // F6 Medium: request form uses native bubbles only; add inline errors  index.html:48, members.html:11
 document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('form[data-proto]').forEach(function(f){f.noValidate=true;f.addEventListener('submit',function(e){var bad=null;f.querySelectorAll('input').forEach(function(i){var id=i.id+'-err',m=document.getElementById(id);if(m)m.remove();i.removeAttribute('aria-invalid');if(!i.checkValidity()){bad=bad||i;i.setAttribute('aria-invalid','true');m=document.createElement('p');m.id=id;m.className='field-err';m.style.cssText='color:#8b2a0e;font-size:1rem;margin:6px 0 12px;font-weight:600';m.textContent=i.type==='email'?'Enter an email like name@example.com.':'Tell us what kind of business.';i.setAttribute('aria-describedby',id);i.after(m)}});if(bad){e.preventDefault();e.stopImmediatePropagation();bad.focus()}},true)})});
+
+// Gate R3: 'Other' (and any #need link) focuses the lead form input
+document.querySelectorAll('a[href="#need"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){var i=document.querySelector('#need input');if(i)i.focus({preventScroll:true})},50)})});

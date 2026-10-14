@@ -88,7 +88,7 @@ window.SITE = {
   sides: {
     prompt:"Which side of Harvest Way do you live on?",
     options:[
-      { id:"west", label:"West (District 1)", rows:[
+      { id:"west", label:"West / District 1", rows:[
         ["District","District 1, west of Harvest Way"],
         ["Water","Town of Northlake Utility Billing","940-648-3290"],
         ["Police","Northlake Police Department, non-emergency 940-349-1600 ext 9","940-349-1600"],
@@ -97,7 +97,7 @@ window.SITE = {
         ["HOA","FirstService Residential, harvest@fsresidential.com","(817) 717-7780"],
         ["School district","Northwest ISD"],
         ["Voting precinct","Look up your precinct with Denton County","","https://www.votedenton.gov/voter-information/voter-lookup/"]]},
-      { id:"east", label:"East (District 2)", rows:[
+      { id:"east", label:"East / District 2", rows:[
         ["District","District 2, east of Harvest Way"],
         ["Water","Argyle Water Supply Corp (sewer: Town of Argyle)","940-464-7713"],
         ["Police","Denton County Sheriff"],
