@@ -252,3 +252,21 @@ aside.card .btn{white-space:normal;overflow-wrap:anywhere;text-align:center}
 .seg label:has(:checked){border-color:var(--gold);background:rgba(224,166,58,.16)}
 .chapters>*,.guide>*{min-width:0}.chapter li,.guide p,.answer dd{overflow-wrap:anywhere}
 @media (min-width:769px) and (min-resolution:2dppx){.bizcover{margin-inline:0}}
+
+/* Inner pages match home (Mike, Oct 14): hero treatment scaled, full section rhythm, shared heads */
+.phero{min-height:min(62svh,640px);display:flex;align-items:flex-end;background-position:center 40%}
+.phero:before{background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.7) 100%)}
+.phero .wrap{padding:170px 0 110px}
+.phero h1{text-shadow:0 0 15px rgba(0,0,0,.5);max-width:18ch}
+.phero p{font-size:max(1.25rem,1.3vw);max-width:44ch;margin:0}
+.phero h1+p{margin-top:6px}
+.phero .subtag{margin-top:14px}
+.band .head h2{margin:0}
+.band .head{margin-bottom:56px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.dark .head,.slate .head{border-color:rgba(255,255,255,.16)}
+.band .head>.muted{font-size:1.25rem}
+.cta-band .split{align-items:center}.cta-band h2{margin:0}.cta-band .muted{margin-top:0}
+.band.dark .now .date,.dark #nowdate{color:#fff}
+.chapter{background:#fff}.white .chapter{background:var(--paper)}
+@media (max-width:1023px){.phero{min-height:min(52svh,520px)}.phero .wrap{padding:140px 0 72px}.band .head{margin-bottom:40px}}
+@media (max-width:600px){.phero{min-height:auto}.phero .wrap{padding:120px 0 52px}.phero h1{font-size:2.25rem}.phero p{font-size:1.125rem}.band .head{margin-bottom:32px;padding-bottom:20px}}
