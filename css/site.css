@@ -32,7 +32,7 @@ p{margin:20px 0}
  .nav{display:none;position:fixed;inset:80px 0 0;background:var(--ink);flex-direction:column;align-items:stretch;padding:20px 8%;overflow:auto}
  .nav.open{display:flex}.nav a{font-size:1.25rem;border-bottom:1px solid rgba(255,255,255,.12);border-radius:0}.nav .btn{margin:20px 0 0;border-radius:999px}}
 /* hero */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;color:#fff;background:#1a2620 url(../assets/harvest-farmhouse.jpg) center/cover no-repeat}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;color:#fff;background:#1a2620 url(../assets/harvest-farmhouse.webp) center/cover no-repeat}
 .hero:before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.6)}
 .hero .wrap{position:relative;padding:140px 0 90px}
 .hero h1{text-shadow:0 0 15px rgba(0,0,0,.5);max-width:14ch}
@@ -128,7 +128,7 @@ textarea{min-height:120px}
 .profile .cover{aspect-ratio:3/1;object-fit:cover;width:100%}
 .profile .pin{padding:28px}
 /* page hero */
-.phero{background:var(--ink) url(../assets/harvest-farmhouse.jpg) center 30%/cover;position:relative;color:#fff}
+.phero{background:var(--ink) url(../assets/harvest-farmhouse.webp) center 30%/cover;position:relative;color:#fff}
 .phero:before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.72)}
 .phero .wrap{position:relative;padding:170px 0 90px}
 .phero h1{font-size:clamp(2.75rem,5vw,4.5rem)}
@@ -251,3 +251,4 @@ aside.card .btn{white-space:normal;overflow-wrap:anywhere;text-align:center}
 .seg label:has(:focus-visible){outline:3px solid var(--gold);outline-offset:2px}
 .seg label:has(:checked){border-color:var(--gold);background:rgba(224,166,58,.16)}
 .chapters>*,.guide>*{min-width:0}.chapter li,.guide p,.answer dd{overflow-wrap:anywhere}
+@media (min-width:769px) and (min-resolution:2dppx){.bizcover{margin-inline:0}}
