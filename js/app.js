@@ -58,22 +58,24 @@ function renderNow(){var el=$('#now');if(!el)return;var day=TODAY.getDay(),iso=[
  var col=function(h,a){return a.length?'<div><h3>'+h+'</h3><ul>'+a.map(li).join('')+'</ul></div>':''};
  $('#nowdate').textContent=TODAY.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
  el.innerHTML=col('Today',today)+col('Coming Up',up)+col("Don't Forget",dont)}
-// ---- address lookup (EXAMPLE LOGIC) ----
-function wireLookup(){var f=$('#lookup');if(!f)return;
- f.addEventListener('submit',function(e){e.preventDefault();var side=(f.querySelector('input[name=side]:checked')||{}).value,addr=$('#addr').value.trim();
-  var out=$('#lookup-out');if(!side){out.innerHTML='<p role="alert">Choose which side of Harvest Way you live on.</p>';return}
-  var w=side==='west',R=function(id){return S.resources.filter(function(r){return r.id===id})[0]};
-  var row=function(k,v){return '<dt>'+k+'</dt><dd>'+v+'</dd>'},ph=function(r){return r.phone?' <a href="tel:'+r.phone.replace(/\D/g,'')+'">'+r.phone+'</a>':''};
-  out.innerHTML='<h3>Who serves '+(addr?esc(addr):'your street')+'</h3><p class="note">'+EX+' The west/east split uses example logic from the side you picked. A real lookup would geocode the address.</p><dl>'+
-   row('District',w?'District 1, west of Harvest Way':'District 2, east of Harvest Way')+
-   row('Water',w?R('water-w').name+ph(R('water-w')):R('water-e').name+ph(R('water-e'))+'<br>Sewer: Town of Argyle (sewer only)')+
-   row('Police',w?'Northlake PD, non-emergency 940-349-1600 ext 9':'Denton County Sheriff')+
-   row('Fire / EMS','Denton County ESD No. 1'+ph(R('fire')))+
-   row('Trash','Republic Services, every Wednesday, carts out by 7am'+ph(R('trash')))+
-   row('HOA','FirstService Residential'+ph(R('hoa')))+
-   row('School district','Northwest ISD')+
-   row('Voting precinct','<a href="https://www.votedenton.gov/voter-information/voter-lookup/">Look up your precinct with Denton County</a>')+
-   row('Town','Not confirmed by street yet. <span class="note">Pending verification.</span>')+'</dl>'})}
+// ---- who serves my street ----
+// Each directory sets its own sides and values in admin (S.sides). No address field: pick a side, see the list instantly.
+function renderSide(out,id){var o=S.sides.options.filter(function(x){return x.id===id})[0];if(!o){out.innerHTML='';return}
+ out.innerHTML='<h3>Who serves '+esc(o.label)+'</h3><dl>'+o.rows.map(function(r){var v=esc(r[1]);if(r[3])v='<a href="'+r[3]+'" rel="noopener">'+v+'</a>';if(r[2])v+=' <a href="tel:'+r[2].replace(/\D/g,'')+'">'+r[2]+'</a>';return '<dt>'+esc(r[0])+'</dt><dd>'+v+'</dd>'}).join('')+'</dl>'}
+function wireLookup(){$$('.sidepick').forEach(function(f){var out=f.querySelector('.answer');
+ f.addEventListener('change',function(e){if(e.target.name==='side')renderSide(out,e.target.value)});
+ f.addEventListener('submit',function(e){e.preventDefault()})})}
+// ---- guide chapters (data in S.guide, editable per directory) ----
+function renderGuide(){var el=$('#chapters');if(!el)return;
+ el.innerHTML=S.guide.map(function(c){return '<article class="chapter" id="ch-'+c.id+'"><h3>'+esc(c.title)+'</h3><ul>'+c.items.map(function(i){return '<li>'+(i.html?i.t:esc(i.t))+(i.ex?' '+EX:'')+(i.src?' <a class="srcl" href="'+i.src+'" rel="noopener">Source</a>':'')+'</li>'}).join('')+'</ul></article>'}).join('')}
+// ---- recommendations: pending until an admin approves (prototype stores pending on this device) ----
+function wireRecs(){var f=$('#recform');if(!f)return;var key='harvest.recs.pending.v1',id=f.dataset.biz;
+ function load(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return []}}
+ function draw(){var l=load().filter(function(r){return r.biz===id});$('#pending').innerHTML=l.length?'<h4>Your submissions</h4><ul>'+l.map(function(r){return '<li><b>'+esc(r.name)+'</b>: '+(r.rec==='yes'?'Recommends':'Does not recommend')+(r.help?', '+esc(r.help):'')+' <span class="badge pend">Pending admin approval</span></li>'}).join('')+'</ul>':''}
+ f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity())return;var r=(f.querySelector('input[name=rec]:checked')||{}).value;var m=f.querySelector('.formmsg');
+  if(!r){m.textContent='Choose Yes or No.';return}
+  var l=load();l.push({biz:id,name:$('#recname').value.trim(),rec:r,help:$('#help').value.trim(),at:Date.now()});localStorage.setItem(key,JSON.stringify(l));
+  m.textContent='Thanks. Your recommendation is pending admin approval and will count once approved.';f.reset();draw()});draw()}
 // ---- ask harvest (simulated) ----
 var ANS=[[/bulk|trash|garbage|recycl|brush/,'Trash, recycling, brush and bulk are all picked up every Wednesday by Republic Services. Have carts out by 7am. Questions: 817-953-7214.'],
  [/\bac\b|hvac|air|heat|cool/,'Harvest neighbors recommend <b>Example HVAC Co.</b> '+EX+' (12 recommendations). Tap Request Service on their listing. Real HVAC listings will show here once they join.'],
@@ -89,8 +91,8 @@ function wireAsk(){var f=$('#ask');if(!f)return;var o=$('#ask-out');
  $$('.ask-q button').forEach(function(b){b.addEventListener('click',function(){$('#askq').value=b.textContent;go(b.textContent)})})}
 // ---- need form ----
 function wireNeed(){$$('form[data-proto]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var m=f.querySelector('.formmsg');m.textContent='Thanks. This is a prototype, so nothing was sent.';f.reset()})})}
-window.H={S:S,$:$,$$:$$,esc:esc,EX:EX,bizCard:bizCard,offerCard:offerCard,activeOffers:activeOffers,catName:catName,badges:badges,cta:cta,saveBtn:saveBtn,store:store};
-wireSearch();renderNow();wireLookup();wireAsk();wireNeed();
+window.H={S:S,$:$,$$:$$,esc:esc,EX:EX,bizCard:bizCard,offerCard:offerCard,activeOffers:activeOffers,catName:catName,badges:badges,cta:cta,saveBtn:saveBtn,store:store,wireRecs:wireRecs};
+wireSearch();renderNow();wireLookup();renderGuide();wireRecs();wireAsk();wireNeed();
 })();
 
 // F5 Medium: filter click rebuilds buttons -> focus lost to <body>  members.html:16 ; F9 Low same on my-harvest remove (my-harvest.html:12)

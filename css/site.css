@@ -204,3 +204,29 @@ input[type=text],input[type=email],select,textarea{border-color:#857c6c}
 @media (min-width:601px){.hero{align-items:flex-start}.hero .wrap{padding-top:max(130px,22svh)}}
 .save,.ask-q button{border-color:#857c6c}
 .profile .badges,.profile-body .badges{justify-content:flex-start}
+/* r4 */
+.hero{position:relative}
+.scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:#fff;opacity:.85;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;animation:cue 2.2s ease-in-out infinite}
+.scrollcue:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@keyframes cue{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+@media (prefers-reduced-motion:reduce){.scrollcue{animation:none}}
+@media (max-height:500px) and (orientation:landscape){.scrollcue{display:none}}
+.chapters{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:24px}
+.chapter{background:var(--paper);border:1px solid #e3ddd0;border-radius:var(--r);padding:26px}
+.chapter ul{margin:0;padding-left:1.1em}.chapter li{margin:0 0 12px;font-size:1.125rem}
+.srcl{font-size:1rem;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+.bizcover{position:relative}
+.bizbanner{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover;border-radius:var(--r)}
+.bizlogo{position:absolute;left:24px;bottom:-40px;width:120px;height:120px;border-radius:16px;background:#fff;border:4px solid #fff;object-fit:contain;box-shadow:0 0 30px rgba(0,0,0,.15)}
+@media (max-width:600px){.bizlogo{width:80px;height:80px;bottom:-28px;left:14px}}
+.bizcover-band{padding-bottom:56px}
+.subtag{font-size:1.125rem!important;opacity:.9}
+.livetags{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 8px}
+.tag{display:inline-block;padding:6px 12px;border-radius:999px;background:#ece5d6;font-weight:600;font-size:1rem}
+.tag.vm{background:#1f5135;color:#fff}
+.abouth{font-size:1.75rem;margin-top:20px}
+.views{font-size:1.125rem}.views b{font-size:1.5rem}
+.badge.pend{background:#fff4dc;color:#6b4b0e;border:1px solid #c9a35a}
+#pending ul{padding-left:1.1em}
+.specialoffer{max-width:720px;margin:0 auto}
+.bizcover-band + .band{padding-top:40px}
