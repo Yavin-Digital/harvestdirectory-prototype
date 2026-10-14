@@ -64,7 +64,7 @@ function renderSide(out,id){var o=S.sides.options.filter(function(x){return x.id
  out.innerHTML='<h3>Who serves '+esc(o.label)+'</h3><dl>'+o.rows.map(function(r){var v=esc(r[1]);if(r[3])v='<a href="'+r[3]+'" rel="noopener">'+v+'</a>';if(r[2])v+=' <a href="tel:'+r[2].replace(/\D/g,'')+'">'+r[2]+'</a>';return '<dt>'+esc(r[0])+'</dt><dd>'+v+'</dd>'}).join('')+'</dl>'}
 // Options come from S.sides.options, set per directory in admin. No options -> only a "See all" button to the full guide.
 function wireLookup(){$$('.sidepick').forEach(function(f){var opts=(S.sides&&S.sides.options)||[];
- if(!opts.length){f.innerHTML='<a class="btn btn-gold" href="new-resident.html#res">See all</a>';return}
+ if(!opts.length){f.innerHTML='<a class="btn btn-gold" href="new-resident.html#res">See all</a>';var sec=f.closest('section');if(sec)sec.querySelectorAll('a.btn').forEach(function(a){if(!f.contains(a)){a.hidden=true;a.style.display='none'}});return}
  f.innerHTML='<fieldset class="seg" style="border:0;padding:0"><legend style="font-weight:600;margin-bottom:8px">'+esc(S.sides.prompt||'Which side do you live on?')+'</legend>'+opts.map(function(o){return '<label><input type="radio" name="side" value="'+esc(o.id)+'">'+esc(o.label)+'</label>'}).join('')+'</fieldset><div class="answer" aria-live="polite"></div>';
  var out=f.querySelector('.answer');if(!$('#lookup-out'))out.id='lookup-out';
  f.addEventListener('change',function(e){if(e.target.name==='side')renderSide(out,e.target.value)});
