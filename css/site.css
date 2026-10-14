@@ -250,3 +250,4 @@ aside.card .btn{white-space:normal;overflow-wrap:anywhere;text-align:center}
 /* L6 css/site.css:92-93 side picker: no focus ring in WebKit after arrow keys, and the chosen side has no state beyond the native dot */
 .seg label:has(:focus-visible){outline:3px solid var(--gold);outline-offset:2px}
 .seg label:has(:checked){border-color:var(--gold);background:rgba(224,166,58,.16)}
+.chapters>*,.guide>*{min-width:0}.chapter li,.guide p,.answer dd{overflow-wrap:anywhere}
