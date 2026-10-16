@@ -29,7 +29,7 @@ module.exports = {
       { id: 'water-fm', side: 'Flower Mound', name: 'Town of Flower Mound', detail: 'Water, sewer and trash billing.', phone: '972-874-6010', src: FAQ, verified: V }],
     police: [{ id: 'police-fm', side: 'Flower Mound', name: 'Flower Mound Police Department', detail: 'Non-emergency. Anonymous crime tip line 972-874-3307. Call 911 in an emergency.', phone: '972-539-0525', web: 'https://www.flowermound.gov/139/Police-Department', src: MUD, verified: V }],
     town: [
-      { id: 'town-northlake', side: 'Northlake', name: 'Town of Northlake', detail: '1500 Commons Circle, Suite 300, Northlake, TX 76226.', phone: '940-648-3290', web: 'http://www.town.northlake.tx.us', src: LOC, verified: V },
+      { id: 'town-northlake', side: 'Northlake', name: 'Town of Northlake', detail: '1500 Commons Circle, Suite 300, Northlake, TX 76226.', phone: '940-648-3290', web: 'https://town.northlake.tx.us', src: LOC, verified: V },
       { id: 'town-fm', side: 'Flower Mound', name: 'Town of Flower Mound', detail: '2121 Cross Timbers Road, Flower Mound, TX 75028.', phone: '972-874-6000', web: 'https://www.flower-mound.com/', src: LOC, verified: V },
       { id: 'town-argyle', side: 'Argyle / ETJ', name: 'Town of Argyle', detail: '308 Denton Street, Argyle, TX 76226.', phone: '940-464-7273', web: 'https://www.argyletx.com/', src: LOC, verified: V }],
     county: [{ id: 'county', name: 'Denton County Tax Assessor / Collector', detail: 'Property taxes and vehicle registration.', phone: '940-349-3510', web: 'https://www.dentoncounty.gov', src: LOC, verified: V }],
@@ -58,3 +58,48 @@ module.exports = {
         ['hoa|amenit|pool|club', 'The Canyon Falls HOA is managed by SBB Community Management: 940-240-0803, inside the Canyon Falls Club, 6950 Canyon Falls Dr.'],
         ['school|isd', 'Canyon Falls is split between Argyle ISD and Northwest ISD by address. Check your campus with the district.']]
 };
+
+/* R2 (Marco gate): taste levers */
+Object.assign(module.exports, {
+ "heroComposition": "name-mark",
+ "accentRole": "underline",
+ "layout": {
+  "radius": "0px",
+  "ruleWeight": "1px",
+  "bandOrder": [
+   "lookup",
+   "intents",
+   "quick"
+  ]
+ },
+ "type": {
+  "display": {
+   "family": "Space Grotesk",
+   "file": "spacegrotesk",
+   "weight": 600,
+   "range": "500 700",
+   "fallback": "system-ui,sans-serif"
+  },
+  "text": [
+   {
+    "family": "Inter",
+    "file": "inter",
+    "range": "400 700",
+    "fallback": "system-ui,sans-serif"
+   }
+  ]
+ },
+ "tagline": "Built for Canyon Falls: three towns, one neighborhood."
+});
+Object.assign(module.exports.brand, {
+ "coords": "33.0732\u00b0 N, 97.2276\u00b0 W",
+ "motif": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 60\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><!-- stylized contour lines stepping down to a fall line (decorative, not survey data) --><path d=\"M4 14 C60 6 110 22 150 14 S176 8 180 14 C184 20 210 6 250 14 S320 20 356 12\"/><path d=\"M4 24 C60 16 110 32 150 24 S172 20 176 28 C180 36 210 18 250 24 S320 30 356 22\"/><path d=\"M4 34 C60 26 110 42 150 34 S170 32 174 42 C178 50 210 30 250 34 S320 40 356 32\"/><path d=\"M180 14 V56 M176 28 V56 M184 22 V56\" stroke-width=\"1\"/></svg>",
+ "colors": {
+  "ink": "#0b1f2e",
+  "slate": "#12324a",
+  "paper": "#f2f6f8",
+  "gold": "#38bdf8",
+  "goldD": "#075985",
+  "kickerOnPhoto": "#bae6fd"
+ }
+});

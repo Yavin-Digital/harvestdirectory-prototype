@@ -150,7 +150,7 @@ window.SITE = {
   ],
   [
    "Town of Argyle",
-   "https://www.argyle-tx.gov"
+   "https://www.argyletx.com/"
   ],
   [
    "Denton County",
@@ -865,6 +865,13 @@ window.SITE = {
    "The Tribe Maker builds websites and marketing for local businesses, and the owner lives right here in Harvest. (817) 812-8946."
   ]
  ],
+ "heroComposition": "photo",
+ "accentRole": "none",
+ "layout": {
+  "radius": "2px",
+  "ruleWeight": "1px",
+  "bandOrder": []
+ },
  "resources": [
   {
    "id": "trash",

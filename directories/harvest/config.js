@@ -151,7 +151,7 @@ module.exports = {
   ],
   [
    "Town of Argyle",
-   "https://www.argyle-tx.gov"
+   "https://www.argyletx.com/"
   ],
   [
    "Denton County",
@@ -1027,3 +1027,15 @@ module.exports = {
   ]
  ]
 };
+
+/* R2 (Marco gate): taste levers */
+Object.assign(module.exports, {
+ "heroComposition": "photo",
+ "accentRole": "none",
+ "layout": {
+  "radius": "2px",
+  "ruleWeight": "1px",
+  "bandOrder": []
+ }
+});
+Object.assign(module.exports.brand, {});

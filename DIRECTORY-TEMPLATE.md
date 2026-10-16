@@ -31,3 +31,11 @@ The repo root (`index.html`, `js/site.js` ...) is the Harvest build (`node build
 
 ## Pipeline
 Prototype only. No Phase 3 and no `@app-update` for these. Work goes feature branch -> draft PR; nothing merges to `main` without Mike.
+
+## R2 design levers (per config)
+- `type: { display:{family,file,weight,range,fallback}, text:[...] }`: fonts are self-hosted from `template/fonts/` (free OFL Google Fonts files, no CDN).
+- `heroComposition`: `photo` | `name-mark` (paper hero, huge 7% community name, coords caption) | `map-plate` (`brand.plate`, a line-art OSM street SVG, credited).
+- `accentRole`: `rule` | `underline` | `numeral` | `none`. `layout: { radius (default 2px), ruleWeight, bandOrder:[intents, quick, now, cats, featured, ask, deals, lookup, pitch] }`.
+- `brand.motif`: inline SVG (use `currentColor`), shown as a divider. `brand.coords`: hero caption. `heroHeadline` and `tagline` override the default copy.
+- No favicon file: the build writes `assets/favicon.svg` from the monogram + accent. No real image: the og:image tag is left out.
+- The build fails if goldD on paper/white, gold behind ink, gold on slate, white on slate or ink on paper is under 4.5:1.
