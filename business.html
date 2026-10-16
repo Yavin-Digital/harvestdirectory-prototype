@@ -1,17 +1,16 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Tribe Maker | Harvest Directory</title><meta name="description" content="Sample Harvest Directory business profile."><meta name="robots" content="noindex,nofollow">
-<link rel="canonical" href="https://harvestdirectory-preview.clientreview.co/business.html"><meta property="og:title" content="The Tribe Maker | Harvest Directory"><meta property="og:description" content="Sample Harvest Directory business profile.">
+<title>Business profile | Harvest Directory</title><meta name="description" content="Sample Harvest Directory business profile."><meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://harvestdirectory-preview.clientreview.co/business.html"><meta property="og:title" content="Business profile | Harvest Directory"><meta property="og:description" content="Sample Harvest Directory business profile.">
 <meta property="og:image" content="https://harvestdirectory-preview.clientreview.co/assets/harvest-farmhouse.jpg"><meta property="og:url" content="https://harvestdirectory-preview.clientreview.co/business.html"><meta property="og:type" content="website">
-<link rel="icon" href="assets/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.png"><link rel="preload" href="fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/harvest-farmhouse-1280.webp" media="(max-width:768px)" fetchpriority="high"><link rel="preload" as="image" href="assets/harvest-farmhouse.webp" media="(min-width:769px)" fetchpriority="high"><link rel="stylesheet" href="css/site.css"><link rel="preload" href="js/site.js" as="script"><link rel="preload" href="js/layout.js" as="script"><link rel="preload" href="js/app.js" as="script">
 <script>/* CLS gate: hide main until app.js has rendered the data-driven blocks (removed in app.js; 3s safety). */document.documentElement.classList.add('js-wait');setTimeout(function(){document.documentElement.classList.remove('js-wait')},3000)</script></head>
-<body data-page="members"><div id="hdr"></div><main id="main">
+<body class="has-photo acc-none type-harvest" data-page="members"><div id="hdr"></div><main id="main">
 <div id="biz"></div>
 </main><div id="ftr"></div>
-<script src="js/site.js"></script><script src="js/layout.js"></script><script src="js/app.js"></script><script>(function(){var H=window.H,S=H.S,id=new URLSearchParams(location.search).get('id')||'tribe-maker';
-var b=S.businesses.filter(function(x){return x.id===id&&x.source==='live'})[0]||S.businesses[0];document.title=b.name+' | Harvest Directory';
+<script src="js/site.js"></script><script src="js/layout.js"></script><script src="js/app.js"></script><script>(function(){var H=window.H,S=H.S,id=new URLSearchParams(location.search).get('id');
+var live=S.businesses.filter(function(x){return x.source==='live'});var b=live.filter(function(x){return x.id===id})[0]||live[0];if(!b){H.$('#biz').innerHTML='<section class="phero"><div class="wrap"><p class="kicker">Local Businesses</p><h1>No business profiles yet</h1><p>'+H.esc(S.community)+' has no published businesses yet.</p></div></section><section class="band"><div class="wrap"><a class="btn btn-dark" href="join.html">Get listed</a></div></section>';return}document.title=b.name+' | Harvest Directory';
 var offers=S.offers.filter(function(o){return o.biz===b.id});
 var recN=b.recsApproved||b.recs||0;
 H.$('#biz').innerHTML='<section class="phero bizhero"><div class="wrap"><p class="kicker">'+H.catName(b.cat)+' / '+b.sub+'</p><h1>'+H.esc(b.name)+'</h1><p>'+H.esc(b.tagline)+'</p>'+(b.subtagline?'<p class="subtag">'+H.esc(b.subtagline)+'</p>':'')+'</div></section>'+

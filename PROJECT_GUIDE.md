@@ -23,7 +23,7 @@ community.html      Community (renamed from Groups) + Right Now
 join.html           $29/mo value list, profile preview, badge definitions
 my-harvest.html     Favorites dashboard (localStorage key harvest.myharvest.v1)
 css/site.css        MARCO bands (ink/slate/paper/photo), gold accent as jewelry
-js/site.js          window.SITE: ALL data. Each item has source: live | verified | example
+js/site.js          GENERATED from directories/harvest/config.js (node build.mjs harvest --out .). window.SITE: ALL data. Each item has source: live | verified | example
 js/layout.js        Shared header/footer, mobile menu (Esc closes)
 js/app.js           Search index, Right Now, lookup, Ask Harvest, favorites, cards
 assets/             Real images only (live site + harvestbyhillwood.com farmhouse)
@@ -39,6 +39,7 @@ robots.txt          Disallow: /   (all pages also meta noindex)
 - Ask Harvest is simulated keyword matching over site data.
 
 ## 4. Work Completed
+- 2026-10-15: Turned into the Doorstep Local directory template (see DIRECTORY-TEMPLATE.md). Applied live-site changes (LIVE-GAPS-2026-10-15.md). Added events, announcements, featured, recommend, help, privacy, terms. Data moved to directories/harvest/config.js; js/site.js is now generated.
 - 2026-10-13: Initial prototype, all 8 pages, verified 2026-10-09 resident facts, live business content.
 
 ## 5. Rules for Implementation
