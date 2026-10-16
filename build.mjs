@@ -52,7 +52,7 @@ function build(slug, out){
   const comp = c.heroComposition || (h.desktop ? 'photo' : 'name-mark');
   const caption = esc([c.brand && c.brand.coords, c.area].filter(Boolean).join(' · '));
   let heroMark = '';
-  if (comp === 'name-mark') heroMark = `<div class="mark" aria-hidden="true"><span>${c.community.split(/\s+/).map(esc).join("<br>")}</span></div>` + (caption ? `<p class="plate">${caption}</p>` : '');
+  if (comp === 'name-mark') heroMark = `<div class="mark" aria-hidden="true">${c.community.split(/\s+/).map(w=>`<span data-w="${esc(w)}"></span>`).join("")}</div>` + (caption ? `<p class="plate">${caption}</p>` : '');
   if (comp === 'map-plate') heroMark = `<div class="mark map" aria-hidden="true"><img src="${esc(b.plate)}" alt="" width="1000" height="688"></div><p class="plate">${caption}<small>Streets: &copy; OpenStreetMap contributors</small></p>`;
   // favicon: real file, else an SVG generated from the monogram + accent
   let fav = b.favicon || b.logo;
