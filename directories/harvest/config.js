@@ -1,0 +1,1029 @@
+/* Harvest Directory config. The first filled directory. See directories/_blank/config.js for every field.
+   source: "live" = copied from harvestdirectory.com, "verified" = checked against the linked source, "example" = simulated and always tagged Example. */
+module.exports = {
+ "slug": "harvest",
+ "name": "Harvest Directory",
+ "community": "Harvest",
+ "area": "Argyle, TX",
+ "heroKicker": "Harvest, Argyle, TX",
+ "baseUrl": "https://harvestdirectory-preview.clientreview.co",
+ "liveUrl": "https://harvestdirectory.com/harvest",
+ "joinUrl": "https://harvestdirectory.com/harvest/join",
+ "links": {
+  "signIn": "https://doorsteplocal.com/login",
+  "dashboard": "https://doorsteplocal.com/dashboard"
+ },
+ "legal": {
+  "privacy": "https://harvestdirectory.com/privacy",
+  "terms": "https://harvestdirectory.com/terms"
+ },
+ "brand": {
+  "logo": "assets/favicon.png",
+  "favicon": "assets/favicon.png",
+  "colors": {
+   "ink": "#14201a",
+   "slate": "#22312a",
+   "paper": "#f6f2ea",
+   "gold": "#e0a63a",
+   "goldD": "#8a5a10",
+   "kickerOnPhoto": "#f8dc9c"
+  },
+  "hero": {
+   "desktop": "assets/harvest-farmhouse.webp",
+   "mobile": "assets/harvest-farmhouse-1280.webp",
+   "og": "assets/harvest-farmhouse.jpg",
+   "credit": "harvestbyhillwood.com farmhouse (1920x1100 source)"
+  }
+ },
+ "taglines": [
+  "Built for Harvest. Not the whole internet.",
+  "Everything Harvest. One place.",
+  "Need something in Harvest? Start here.",
+  "Harvest lives here."
+ ],
+ "join": {
+  "price": 29,
+  "extraNeighborhood": 25,
+  "promo": "First 20 businesses in each neighborhood get 90 days free (promo code at checkout).",
+  "features": [
+   [
+    "Neighborhood search",
+    "Show up when Harvest residents search for what you do."
+   ],
+   [
+    "Full business profile",
+    "Rich text about your business, contact and social links."
+   ],
+   [
+    "Clean categories",
+    "Listed in the right parent category and subcategory, never a duplicate."
+   ],
+   [
+    "Quote request inbox",
+    "Residents contact you directly from your page."
+   ],
+   [
+    "Harvest-only offers",
+    "Post neighbor specials and new resident offers with an expiry date."
+   ],
+   [
+    "Events",
+    "Put your events on the Harvest Right Now calendar."
+   ],
+   [
+    "Photos and video",
+    "Photo gallery up to 10 images plus a YouTube or Vimeo embed."
+   ],
+   [
+    "Profile view analytics",
+    "See how many neighbors found you."
+   ],
+   [
+    "Resident recommendations",
+    "Neighbors can recommend you and say what you helped with."
+   ],
+   [
+    "Featured eligibility",
+    "Eligible for Business of the Month and the Premier Partner badge."
+   ]
+  ],
+  "faq": [
+   [
+    "When do I get access?",
+    "After you enter your card on the join page and Stripe confirms the payment, you can start building your profile."
+   ],
+   [
+    "When does my listing go live?",
+    "Once you publish your profile from your dashboard."
+   ],
+   [
+    "What does the promo code do?",
+    "The first 20 spots in each neighborhood get 90 days free. You can only redeem a promo code in one directory."
+   ],
+   [
+    "Can I cancel?",
+    "Yes. Cancel anytime from your dashboard. No penalties, no questions."
+   ],
+   [
+    "Can I list in multiple directories?",
+    "Yes. Additional neighborhoods are $25/mo each. The free period applies to your first directory."
+   ]
+  ]
+ },
+ "heroChips": [
+  [
+   "Plumber",
+   "plumber"
+  ],
+  [
+   "HVAC",
+   "hvac"
+  ],
+  [
+   "Restaurants",
+   "restaurants"
+  ],
+  [
+   "Handyman",
+   "handyman"
+  ],
+  [
+   "Electrician",
+   "electrician"
+  ],
+  [
+   "Landscaper",
+   "landscaper"
+  ]
+ ],
+ "quickLinks": [
+  [
+   "HOA Website",
+   "https://www.harvesttexas.com"
+  ],
+  [
+   "Trash & Recycling",
+   "https://www.republicservices.com/locations/texas/justin-trash-pickup-and-recycling"
+  ],
+  [
+   "Register to Vote",
+   "https://www.votetexas.gov/register-to-vote/"
+  ],
+  [
+   "Town of Argyle",
+   "https://www.argyle-tx.gov"
+  ],
+  [
+   "Denton County",
+   "https://www.dentoncounty.gov"
+  ],
+  [
+   "Northwest ISD",
+   "https://www.nisdtx.org"
+  ],
+  [
+   "Browse Local Businesses",
+   "members.html"
+  ],
+  [
+   "Local Deals & Offers",
+   "offers.html"
+  ]
+ ],
+ "emergency": [
+  [
+   "Fire / EMS",
+   "940-464-7102"
+  ]
+ ],
+ "profile": {
+  "trash": [
+   {
+    "name": "Republic Services",
+    "detail": "Belmont FWSD 1 and 2. Trash, recycling, brush and bulk every Wednesday. Carts out by 7am.",
+    "phone": "817-953-7214",
+    "email": "",
+    "web": "",
+    "src": "https://www.town.northlake.tx.us/439/Trash-and-Recycling-Services",
+    "verified": "2026-10-09"
+   }
+  ],
+  "water": [
+   {
+    "name": "Town of Northlake Utility Billing",
+    "detail": "Water for District 1, west of Harvest Way.",
+    "phone": "940-648-3290",
+    "email": "",
+    "web": "https://town.northlake.tx.us",
+    "src": "https://town.northlake.tx.us",
+    "verified": "2026-10-09",
+    "id": "water-w",
+    "side": "West / District 1"
+   },
+   {
+    "name": "Argyle Water Supply Corp",
+    "detail": "Water for District 2, east of Harvest Way.",
+    "phone": "940-464-7713",
+    "email": "",
+    "web": "",
+    "src": "",
+    "verified": "2026-10-09",
+    "id": "water-e",
+    "side": "East / District 2"
+   }
+  ],
+  "sewer": [
+   {
+    "name": "Town of Argyle",
+    "detail": "Sewer for District 2. Water is Argyle Water Supply Corp.",
+    "phone": "",
+    "email": "",
+    "web": "",
+    "src": "",
+    "verified": "2026-10-09",
+    "id": "sewer-e",
+    "side": "East / District 2"
+   }
+  ],
+  "police": [
+   {
+    "name": "Northlake Police Department",
+    "detail": "Non-emergency 940-349-1600 ext 9. Admin 940-648-4804.",
+    "phone": "940-349-1600",
+    "email": "",
+    "web": "",
+    "src": "",
+    "verified": "2026-10-09",
+    "id": "police-w",
+    "side": "West / District 1"
+   },
+   {
+    "name": "Denton County Sheriff",
+    "detail": "District 2, east of Harvest Way.",
+    "phone": "",
+    "email": "",
+    "web": "https://www.dentoncounty.gov",
+    "src": "https://www.dentoncounty.gov",
+    "verified": "2026-10-09",
+    "id": "police-e",
+    "side": "East / District 2"
+   }
+  ],
+  "fire": [
+   {
+    "name": "Denton County ESD No. 1",
+    "detail": "Fire and EMS for all of Harvest. Always call 911 in an emergency.",
+    "phone": "940-464-7102",
+    "email": "",
+    "web": "",
+    "src": "",
+    "verified": "2026-10-09",
+    "id": "fire"
+   }
+  ],
+  "hoa": [
+   {
+    "name": "FirstService Residential",
+    "detail": "Harvest HOA management. harvest@fsresidential.com. After-hours 877-378-2388.",
+    "phone": "(817) 717-7780",
+    "email": "harvest@fsresidential.com",
+    "web": "https://harvesttexas.com",
+    "src": "https://harvesttexas.com",
+    "verified": "2026-10-09",
+    "id": "hoa"
+   }
+  ],
+  "town": [
+   {
+    "name": "Argyle Town Hall",
+    "detail": "308 Denton St, Argyle, TX.",
+    "phone": "940-464-7273",
+    "email": "",
+    "web": "",
+    "src": "",
+    "verified": "2026-10-09",
+    "id": "argyle"
+   }
+  ],
+  "county": [
+   {
+    "name": "Denton County",
+    "detail": "County services, records and vehicle registration.",
+    "phone": "",
+    "email": "",
+    "web": "https://www.dentoncounty.gov",
+    "src": "https://www.dentoncounty.gov",
+    "verified": "2026-10-09",
+    "id": "county"
+   }
+  ],
+  "isd": [
+   {
+    "name": "Northwest ISD",
+    "detail": "School district serving Harvest. Check your campus by address with the district.",
+    "phone": "",
+    "email": "",
+    "web": "https://www.nisdtx.org",
+    "src": "https://www.nisdtx.org",
+    "verified": "2026-10-09",
+    "id": "schools"
+   }
+  ],
+  "elections": [
+   {
+    "name": "VoteTexas",
+    "detail": "Register and check voter status.",
+    "phone": "",
+    "email": "",
+    "web": "https://www.votetexas.gov",
+    "src": "https://www.votetexas.gov",
+    "verified": "2026-10-09",
+    "id": "vote-tx"
+   },
+   {
+    "name": "Denton County Elections",
+    "detail": "Polling places and your voting precinct.",
+    "phone": "",
+    "email": "",
+    "web": "https://www.votedenton.gov/voter-information/voter-lookup/",
+    "src": "https://www.votedenton.gov/voter-information/voter-lookup/",
+    "verified": "2026-10-09",
+    "id": "vote-dc"
+   }
+  ],
+  "representatives": [],
+  "specialDistrict": [],
+  "utilities": [],
+  "etjNotes": "Harvest is split at Harvest Way: west is District 1 (Town of Northlake services), east is District 2 (Argyle WSC water, Town of Argyle sewer, Denton County Sheriff)."
+ },
+ "sidesLead": "Harvest is split at Harvest Way. West is District 1, east is District 2.",
+ "sides": {
+  "prompt": "Which side of Harvest Way do you live on?",
+  "options": [
+   {
+    "id": "west",
+    "label": "West / District 1",
+    "rows": [
+     [
+      "District",
+      "District 1, west of Harvest Way"
+     ],
+     [
+      "Water",
+      "Town of Northlake Utility Billing",
+      "940-648-3290"
+     ],
+     [
+      "Police",
+      "Northlake Police Department, non-emergency 940-349-1600 ext 9",
+      "940-349-1600"
+     ],
+     [
+      "Fire / EMS",
+      "Denton County ESD No. 1",
+      "940-464-7102"
+     ],
+     [
+      "Trash",
+      "Republic Services: trash, recycling, brush and bulk every Wednesday, carts out by 7am",
+      "817-953-7214"
+     ],
+     [
+      "HOA",
+      "FirstService Residential, harvest@fsresidential.com",
+      "(817) 717-7780"
+     ],
+     [
+      "School district",
+      "Northwest ISD"
+     ],
+     [
+      "Voting precinct",
+      "Look up your precinct with Denton County",
+      "",
+      "https://www.votedenton.gov/voter-information/voter-lookup/"
+     ]
+    ]
+   },
+   {
+    "id": "east",
+    "label": "East / District 2",
+    "rows": [
+     [
+      "District",
+      "District 2, east of Harvest Way"
+     ],
+     [
+      "Water",
+      "Argyle Water Supply Corp (sewer: Town of Argyle)",
+      "940-464-7713"
+     ],
+     [
+      "Police",
+      "Denton County Sheriff"
+     ],
+     [
+      "Fire / EMS",
+      "Denton County ESD No. 1",
+      "940-464-7102"
+     ],
+     [
+      "Trash",
+      "Republic Services: trash, recycling, brush and bulk every Wednesday, carts out by 7am",
+      "817-953-7214"
+     ],
+     [
+      "HOA",
+      "FirstService Residential, harvest@fsresidential.com",
+      "(817) 717-7780"
+     ],
+     [
+      "School district",
+      "Northwest ISD"
+     ],
+     [
+      "Voting precinct",
+      "Look up your precinct with Denton County",
+      "",
+      "https://www.votedenton.gov/voter-information/voter-lookup/"
+     ]
+    ]
+   }
+  ]
+ },
+ "guideVerifiedNote": "Each note keeps the link to its source.",
+ "guide": [
+  {
+   "id": "mail",
+   "title": "Mail & USPS",
+   "items": [
+    {
+     "t": "Harvest addresses use ZIP 76226 (Argyle).",
+     "src": "https://www.harvestbyhillwood.com/lifestyle/"
+    },
+    {
+     "t": "Argyle Post Office: 440 Highway 377 N, Argyle, TX 76226. Phone 940-464-7626. Check hours on the USPS locator before you go.",
+     "src": "https://tools.usps.com/locations/details/1353305"
+    },
+    {
+     "t": "Set up USPS Change of Address and Informed Delivery online at usps.com.",
+     "src": "https://www.usps.com/manage/forward.htm"
+    },
+    {
+     "t": "Cluster mailbox keys come from your builder or the post office at closing.",
+     "ex": true
+    }
+   ]
+  },
+  {
+   "id": "amenities",
+   "title": "Amenities & pools",
+   "items": [
+    {
+     "t": "Four resort-style pools. The Splash has two pools with shaded cabanas; The Splash II has a baby pool and play features.",
+     "src": "https://www.harvestbyhillwood.com/amenities/"
+    },
+    {
+     "t": "The Fit Barn, north of Old Justin Road: indoor equipment room, fitness lawn, pool, volleyball and basketball courts.",
+     "src": "https://www.harvestbyhillwood.com/amenities/"
+    },
+    {
+     "t": "The Hall is the main event center, with a catering and demonstration kitchen, overlooking Harvest Lake and the event lawn.",
+     "src": "https://www.harvestbyhillwood.com/amenities/"
+    },
+    {
+     "t": "Harvest Farm with resident gardens, Farmhouse Coffee & Treasures, the Front Porch pavilion and a dog park.",
+     "src": "https://www.harvestbyhillwood.com/community/faq/"
+    },
+    {
+     "t": "Harvest info: 1301 Homestead Way, Argyle, TX 76226, (940) 305-6093, info@harvestbyhillwood.com.",
+     "src": "https://www.harvestbyhillwood.com/lifestyle/"
+    },
+    {
+     "t": "Pool hours, guest rules and amenity access cards: ask the HOA (FirstService, harvest@fsresidential.com).",
+     "ex": true
+    }
+   ]
+  },
+  {
+   "id": "dl",
+   "title": "Driver license & vehicle registration",
+   "items": [
+    {
+     "t": "New Texans must register vehicles within 30 days of moving, or penalty fees may apply.",
+     "src": "https://www.txdmv.gov/motorists/new-to-texas"
+    },
+    {
+     "t": "Denton County requires a passing emissions inspection before registration. Non-commercial safety inspections ended Jan 1, 2025.",
+     "src": "https://www.dentoncounty.gov/DocumentCenter/View/9714/Vehicle-Inspection-Requirements-beginning-January-1-2025-PDF"
+    },
+    {
+     "t": "Register at a Denton County tax office. Bring Form 130-U, your out-of-state title or registration, photo ID and proof of Texas insurance.",
+     "src": "https://www.dentoncounty.gov/808/New-Texas-Residents"
+    },
+    {
+     "t": "Get a Texas driver license from DPS within 90 days of moving.",
+     "src": "https://www.txdmv.gov/motorists/new-to-texas"
+    },
+    {
+     "t": "Nearest DPS driver license office: 4020 E. McKinney St, Denton. Services are by appointment.",
+     "src": "https://www.dps.texas.gov/news/dps-opens-new-driver-license-office-denton"
+    }
+   ]
+  },
+  {
+   "id": "health",
+   "title": "Hospitals & urgent care",
+   "items": [
+    {
+     "t": "Emergency: always call 911.",
+     "src": ""
+    },
+    {
+     "t": "Medical City ER Argyle, 24/7: 7214 Crawford Rd, Argyle (I-35 and Crawford Rd). 940-293-2888.",
+     "src": "https://www.medicalcityhealthcare.com/locations/medical-city-er-argyle"
+    },
+    {
+     "t": "Medical City Argyle Hospital: 7218 Crawford Rd, Argyle. 940-293-2885.",
+     "src": "https://www.medicalcityhealthcare.com/locations/medical-city-argyle-hospital"
+    },
+    {
+     "t": "Texas Health Breeze Urgent Care: 125 FM 407 E, Suite 110, Argyle. Open 8am to 8pm, 365 days. 940-307-1068.",
+     "src": "https://breeze.care.texashealth.org/Locations/urgent-care-fm-407-argyle"
+    }
+   ]
+  },
+  {
+   "id": "grocery",
+   "title": "Grocery & pharmacies",
+   "items": [
+    {
+     "t": "Tom Thumb with pharmacy: 1046 Market Way, Argyle, at Harvest Town Center (FM 407 and I-35W). Pharmacy (682) 247-3619.",
+     "src": "https://local.tomthumb.com/tx/argyle/1046-market-wy.html"
+    },
+    {
+     "t": "Northlake Commons has more stores, restaurants and services.",
+     "src": "https://www.harvestbyhillwood.com/community/shopping-and-dining/"
+    },
+    {
+     "t": "Other nearby grocery and pharmacy options are being added.",
+     "ex": true
+    }
+   ]
+  },
+  {
+   "id": "groups",
+   "title": "Facebook groups",
+   "items": [
+    {
+     "t": "Harvest lists these resident community groups: Harvest Residents, Trading Post, Market Day Online, Townside Patio Homes, Helping Hands, Harvest Small Business and Harvest Networking Group.",
+     "src": "https://www.harvestbyhillwood.com/lifestyle/"
+    },
+    {
+     "t": "Search each name on Facebook. Group links and admin approval rules are not confirmed yet.",
+     "ex": true
+    }
+   ]
+  },
+  {
+   "id": "outdoors",
+   "title": "Farmers market, parks & trails",
+   "items": [
+    {
+     "t": "Harvest Market Days on the Event Lawn by the lake, across from the Farmhouse (1300 Homestead Way). Vendors are Harvest residents only.",
+     "src": "https://allevents.in/argyle/harvest-market-day/200029747507434"
+    },
+    {
+     "t": "Next Market Day: Saturday, Nov 21, 2026, 9am to 1pm (third-party listing).",
+     "ex": true
+    },
+    {
+     "t": "Argyle Farmers Market: second Saturdays, April to October, 9am to noon, Argyle Community Church Student Center, 414 US 377.",
+     "src": "https://argylefarmersmarket.com/"
+    },
+    {
+     "t": "Central Park: 1.5 miles of trails and open space. Seven neighborhood parks and playgrounds, including a bark park.",
+     "src": "https://www.harvestbyhillwood.com/new-home/types/"
+    },
+    {
+     "t": "Harvest Lake: 11 acres, catch-and-release fishing, with walking trails around it.",
+     "src": "https://www.harvestbyhillwood.com/amenities/"
+    }
+   ]
+  },
+  {
+   "id": "pros",
+   "title": "Movers, handymen, cleaners & landscapers",
+   "items": [
+    {
+     "t": "Search Harvest Directory for local pros: <a href=\"index.html?q=handyman#sform\">handyman</a>, <a href=\"index.html?q=cleaner#sform\">cleaner</a>, <a href=\"index.html?q=landscaper#sform\">landscaper</a>, <a href=\"index.html?q=movers#sform\">movers</a>.",
+     "src": "",
+     "html": true
+    },
+    {
+     "t": "Resident-recommended movers, cleaners and landscapers appear here as they join.",
+     "ex": true
+    },
+    {
+     "t": "Can't find one? <a href=\"index.html#need\">Tell us what Harvest needs</a>.",
+     "src": "",
+     "html": true
+    }
+   ]
+  }
+ ],
+ "categories": [
+  {
+   "id": "home",
+   "name": "Home Services",
+   "subs": [
+    "Plumbing",
+    "HVAC",
+    "Electrical",
+    "Handyman",
+    "Roofing",
+    "Landscaping",
+    "Cleaning",
+    "Pest Control",
+    "Pool"
+   ]
+  },
+  {
+   "id": "food",
+   "name": "Food & Drink",
+   "subs": [
+    "Restaurants",
+    "Coffee",
+    "Food Trucks",
+    "Catering"
+   ]
+  },
+  {
+   "id": "health",
+   "name": "Health & Wellness",
+   "subs": [
+    "Primary Care",
+    "Pediatrics",
+    "Dental",
+    "Urgent Care"
+   ]
+  },
+  {
+   "id": "beauty",
+   "name": "Beauty & Personal Care",
+   "subs": [
+    "Salon",
+    "Barber",
+    "Spa"
+   ]
+  },
+  {
+   "id": "realestate",
+   "name": "Real Estate",
+   "subs": [
+    "Agents",
+    "Property Management"
+   ]
+  },
+  {
+   "id": "finance",
+   "name": "Financial & Insurance",
+   "subs": [
+    "Insurance",
+    "Tax",
+    "Planning"
+   ]
+  },
+  {
+   "id": "pro",
+   "name": "Professional Services",
+   "subs": [
+    "Web & Marketing",
+    "Legal",
+    "Technology"
+   ]
+  },
+  {
+   "id": "auto",
+   "name": "Automotive",
+   "subs": [
+    "Repair",
+    "Detailing"
+   ]
+  },
+  {
+   "id": "kids",
+   "name": "Kids & Education",
+   "subs": [
+    "Tutoring",
+    "Daycare",
+    "Lessons"
+   ]
+  },
+  {
+   "id": "fitness",
+   "name": "Fitness & Recreation",
+   "subs": [
+    "Studios",
+    "Sports",
+    "Kids Activities"
+   ]
+  },
+  {
+   "id": "pets",
+   "name": "Pets",
+   "subs": [
+    "Vets",
+    "Grooming",
+    "Pet Sitting"
+   ]
+  },
+  {
+   "id": "shopping",
+   "name": "Shopping",
+   "subs": [
+    "Boutiques",
+    "Gifts"
+   ]
+  },
+  {
+   "id": "entertainment",
+   "name": "Entertainment",
+   "subs": [
+    "Events",
+    "Parties"
+   ]
+  },
+  {
+   "id": "community",
+   "name": "Community & Nonprofits",
+   "subs": [
+    "Churches",
+    "Clubs",
+    "Volunteer"
+   ]
+  }
+ ],
+ "ctas": {
+  "HVAC": "Request Service",
+  "Plumbing": "Request Service",
+  "Electrical": "Request Service",
+  "Restaurants": "View Menu",
+  "Coffee": "View Menu",
+  "Agents": "Schedule a Consultation",
+  "Tutoring": "Check Availability",
+  "Salon": "Book Appointment",
+  "Handyman": "Tell Us About Your Project",
+  "Landscaping": "Get a Quote",
+  "Studios": "See Classes",
+  "Web & Marketing": "Request a Free Review"
+ },
+ "businesses": [
+  {
+   "id": "tribe-maker",
+   "source": "live",
+   "name": "The Tribe Maker",
+   "cat": "pro",
+   "sub": "Web & Marketing",
+   "liveTag": "Technology",
+   "verifiedMember": true,
+   "tagline": "Websites that work as hard as Harvest neighbors do",
+   "subtagline": "Web design & digital marketing for local businesses",
+   "aboutParas": [
+    "The Tribe Maker is a small, neighbor-run web studio right here in Harvest. We help local shops, home service pros, and family businesses look as good online as they do in person — with clean websites, simple booking, and Google profiles that actually bring in calls.",
+    "We keep things friendly and straightforward: no jargon, no long contracts, just a real person you can wave to at the farmers market. Most projects launch in two to four weeks, and we stick around afterward to keep everything fresh.",
+    "Whether you're opening your first storefront or giving a long-time business a refresh, we'd love to grab a coffee and hear what you're building."
+   ],
+   "phone": "(817) 812-8946",
+   "email": "mike@thetribemaker.com",
+   "web": "https://thetribemaker.com",
+   "city": "Harvest, Argyle, TX 76226",
+   "directions": "https://www.google.com/maps/search/?api=1&query=Harvest%2C%20Argyle%2C%20TX%2076226",
+   "logo": "assets/tribemaker-logo.png",
+   "cover": "assets/tribemaker-hero.jpg",
+   "badges": [
+    "resident",
+    "verified",
+    "serves"
+   ],
+   "ownerNote": "Mike lives right here in Harvest.",
+   "recsApproved": 18,
+   "recsExample": true,
+   "views": 9
+  },
+  {
+   "id": "the-hive",
+   "source": "live",
+   "name": "The Hive",
+   "cat": "fitness",
+   "sub": "Studios",
+   "tagline": "Harvest's premier fitness studio: classes, coaching & community",
+   "web": "https://thehiveharvest.com",
+   "logo": "assets/hive-logo.png",
+   "badges": [
+    "verified",
+    "serves"
+   ],
+   "views": 1,
+   "note": "The live listing's phone is a 555 placeholder, so no phone is shown."
+  },
+  {
+   "id": "ex-hvac",
+   "source": "example",
+   "name": "Example HVAC Co.",
+   "cat": "home",
+   "sub": "HVAC",
+   "tagline": "Example listing: AC repair and tune-ups",
+   "badges": [
+    "recommended",
+    "serves"
+   ],
+   "recs": 12
+  },
+  {
+   "id": "ex-plumb",
+   "source": "example",
+   "name": "Example Plumbing",
+   "cat": "home",
+   "sub": "Plumbing",
+   "tagline": "Example listing: leaks, water heaters, drains",
+   "badges": [
+    "resident",
+    "serves"
+   ],
+   "recs": 7
+  },
+  {
+   "id": "ex-handy",
+   "source": "example",
+   "name": "Example Handyman",
+   "cat": "home",
+   "sub": "Handyman",
+   "tagline": "Example listing: small repairs and honey-do lists",
+   "badges": [
+    "serves"
+   ],
+   "recs": 4
+  },
+  {
+   "id": "ex-pizza",
+   "source": "example",
+   "name": "Example Pizza Kitchen",
+   "cat": "food",
+   "sub": "Restaurants",
+   "tagline": "Example listing: pizza and family meals",
+   "badges": [
+    "recommended",
+    "serves"
+   ],
+   "recs": 21
+  },
+  {
+   "id": "ex-tutor",
+   "source": "example",
+   "name": "Example Tutoring",
+   "cat": "kids",
+   "sub": "Tutoring",
+   "tagline": "Example listing: K-8 math and reading",
+   "badges": [
+    "resident"
+   ],
+   "recs": 5
+  },
+  {
+   "id": "ex-salon",
+   "source": "example",
+   "name": "Example Salon",
+   "cat": "beauty",
+   "sub": "Salon",
+   "tagline": "Example listing: cuts and color",
+   "badges": [
+    "serves"
+   ],
+   "recs": 3
+  },
+  {
+   "id": "ex-realtor",
+   "source": "example",
+   "name": "Example Realty",
+   "cat": "realestate",
+   "sub": "Agents",
+   "tagline": "Example listing: buying and selling in Harvest",
+   "badges": [
+    "resident",
+    "serves"
+   ],
+   "recs": 9
+  }
+ ],
+ "pitch": {
+  "biz": "tribe-maker",
+  "note": "Mike lives right here in Harvest."
+ },
+ "featured": [],
+ "offers": [
+  {
+   "id": "o-tribe",
+   "source": "live",
+   "biz": "tribe-maker",
+   "title": "Free Marketing Review and 30-Day Custom Plan",
+   "kind": "Harvest Neighbor Special",
+   "expires": "2026-10-31",
+   "expiresExample": true
+  },
+  {
+   "id": "o-ex1",
+   "source": "example",
+   "biz": "ex-hvac",
+   "title": "Example: $49 AC tune-up for Harvest homes",
+   "kind": "Harvest Neighbor Special",
+   "expires": "2026-10-31"
+  },
+  {
+   "id": "o-ex2",
+   "source": "example",
+   "biz": "ex-pizza",
+   "title": "Example: Free dessert with any family meal",
+   "kind": "New Resident Offer",
+   "expires": "2026-11-15"
+  },
+  {
+   "id": "o-ex3",
+   "source": "example",
+   "biz": "ex-handy",
+   "title": "Example: First hour 20% off",
+   "kind": "Member Special",
+   "expires": "2026-10-16"
+  }
+ ],
+ "events": [
+  {
+   "source": "verified",
+   "title": "Harvest isn't on Northlake's town trash service. Residents sign up with Republic directly.",
+   "when": "Trash, recycling, brush and bulk every Wednesday, carts out by 7am",
+   "type": "Don't Forget",
+   "src": "https://www.town.northlake.tx.us/439/Trash-and-Recycling-Services"
+  },
+  {
+   "source": "example",
+   "title": "Example: Neighborhood garage sale",
+   "when": "Saturday 8am",
+   "date": "2026-10-17",
+   "type": "Coming Up"
+  },
+  {
+   "source": "example",
+   "title": "Example: Food truck night",
+   "when": "Friday 5pm",
+   "date": "2026-10-16",
+   "type": "Coming Up"
+  },
+  {
+   "source": "example",
+   "title": "Example: Kids soccer sign-ups close",
+   "when": "Today",
+   "date": "2026-10-13",
+   "type": "Today"
+  }
+ ],
+ "announcements": [],
+ "groups": [
+  {
+   "source": "live",
+   "name": "Harvest Homeowners Association",
+   "kind": "HOA",
+   "note": "Managed by FirstService Residential",
+   "web": "https://harvesttexas.com"
+  },
+  {
+   "source": "example",
+   "name": "Example: Harvest Runners Club",
+   "kind": "Club"
+  },
+  {
+   "source": "example",
+   "name": "Example: Harvest Moms Group",
+   "kind": "Group"
+  },
+  {
+   "source": "example",
+   "name": "Example: Youth Soccer",
+   "kind": "Sports"
+  }
+ ],
+ "sponsors": [],
+ "ask": [
+  [
+   "bulk|trash|garbage|recycl|brush",
+   "Trash, recycling, brush and bulk are all picked up every Wednesday by Republic Services. Have carts out by 7am. Harvest is not on Northlake's town trash service, so residents sign up with Republic directly. Questions: 817-953-7214."
+  ],
+  [
+   "\\bac\\b|hvac|air|heat|cool",
+   "Harvest neighbors recommend <b>Example HVAC Co.</b> {EX} (12 recommendations). Tap Request Service on their listing. Real HVAC listings will show here once they join."
+  ],
+  [
+   "water|bill",
+   "West of Harvest Way (District 1): Town of Northlake Utility Billing, 940-648-3290. East (District 2): Argyle Water Supply Corp, 940-464-7713."
+  ],
+  [
+   "hoa|pool|amenit",
+   "The Harvest HOA is managed by FirstService Residential: (817) 717-7780, after hours 877-378-2388, harvest@fsresidential.com."
+  ],
+  [
+   "police|sheriff",
+   "West of Harvest Way: Northlake PD, non-emergency 940-349-1600 ext 9. East: Denton County Sheriff. Emergencies: call 911."
+  ],
+  [
+   "vote|elect|precinct",
+   "Find your precinct and polling places at votedenton.gov. Register or check status at votetexas.gov."
+  ],
+  [
+   "school|isd",
+   "Harvest is served by Northwest ISD. Check your campus with the district."
+  ],
+  [
+   "web|website|market",
+   "The Tribe Maker builds websites and marketing for local businesses, and the owner lives right here in Harvest. (817) 812-8946."
+  ]
+ ]
+};

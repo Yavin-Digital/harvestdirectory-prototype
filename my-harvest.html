@@ -14,7 +14,7 @@
 var sec=function(t,a,f){return a.length?'<h2 style="margin-top:40px">'+t+'</h2><div class="list">'+a.map(f).join('')+'</div>':''};
 out+=sec('Businesses',S.businesses.filter(function(b){return (s.biz||[]).indexOf(b.id)>-1}),H.bizCard);
 out+=sec('Saved offers',S.offers.filter(function(o){return (s.offer||[]).indexOf(o.id)>-1}),H.offerCard);
-out+=sec('Groups',S.community.filter(function(c,i){return (s.group||[]).indexOf('g'+i)>-1}),function(c){return '<article class="card"><h3>'+H.esc(c.name)+'</h3></article>'});
+out+=sec('Groups',(S.groups||[]).filter(function(c,i){return (s.group||[]).indexOf('g'+i)>-1}),function(c){return '<article class="card"><h3>'+H.esc(c.name)+'</h3></article>'});
 var ids=s.contact||[];var con=S.resources.filter(function(r){return r.id==='fire'||r.id==='trash'||r.id==='hoa'||ids.indexOf(r.id)>-1});
 out+='<h2 style="margin-top:40px">Important contacts</h2><div class="list">'+con.map(function(r){return '<article class="card"><span class="kicker" style="margin:0">'+r.group+'</span><h3>'+H.esc(r.name)+'</h3><p>'+H.esc(r.detail)+'</p>'+(r.phone?'<a class="btn btn-dark" href="tel:'+r.phone.replace(/\D/g,'')+'">'+r.phone+'</a>':'')+'</article>'}).join('')+'</div>';
 if(!(s.biz||[]).length&&!(s.offer||[]).length)out='<p>Nothing saved yet. <a href="members.html">Browse local businesses</a> or <a href="offers.html">deals</a> and tap Save.</p>'+out;
